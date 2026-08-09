@@ -1,15 +1,23 @@
 import { profile } from "../content/profile";
+import { praxis } from "../content/praxis";
 
+/**
+ * `Home` is hidden below 640px: the C·Z wordmark already goes home, and
+ * dropping the duplicate is what buys PRAXIS its room on a phone.
+ */
 const ROUTES = [
-  { label: "Home", href: "/" },
-  { label: "Research", href: "/research/" },
-  { label: "Writing", href: "/writing/" },
-  { label: "CV", href: "/cv/" },
+  { label: "Home", href: "/", narrow: false },
+  { label: "Research", href: "/research/", narrow: true },
+  { label: "Writing", href: "/writing/", narrow: true },
+  { label: "CV", href: "/cv/", narrow: true },
 ];
 
 /**
- * Single line at every width, never a second row. Four destinations, which is
+ * Single line at every width, never a second row. Five destinations, which is
  * inside the working-memory limit, so there is no hamburger and no dropdown.
+ *
+ * PRAXIS is last and leaves the site, so it is set off by a rule and carries an
+ * arrow: a nav item that navigates away should say so before it is clicked.
  */
 export function Nav({ current = "/" }: { current?: string }) {
   return (
@@ -38,7 +46,9 @@ export function Nav({ current = "/" }: { current?: string }) {
                 key={r.href}
                 href={r.href}
                 aria-current={active ? "page" : undefined}
-                className="border-b pb-0.5 font-mono text-[11px] tracking-[0.05em] no-underline"
+                className={`border-b pb-0.5 font-mono text-[11px] tracking-[0.05em] no-underline ${
+                  r.narrow ? "" : "hidden sm:inline"
+                }`}
                 style={{
                   color: active ? "var(--ink)" : "var(--ink-3)",
                   borderColor: active ? "var(--brass)" : "transparent",
@@ -48,6 +58,30 @@ export function Nav({ current = "/" }: { current?: string }) {
               </a>
             );
           })}
+
+          <span
+            aria-hidden="true"
+            className="h-3.5 w-px"
+            style={{ background: "var(--rule)" }}
+          />
+
+          <a
+            href={praxis.href}
+            className="flex items-center gap-1 border-b pb-0.5 font-mono text-[11px] font-medium tracking-[0.05em] no-underline"
+            style={{ color: "var(--brass)", borderColor: "transparent" }}
+          >
+            {praxis.name}
+            {/* Inline: U+2197 is outside the font subset we ship. */}
+            <svg viewBox="0 0 10 10" width="8" height="8" aria-hidden="true" style={{ flex: "none" }}>
+              <path
+                d="M2.6 7.4 7.4 2.6M3.4 2.6h4v4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="square"
+              />
+            </svg>
+          </a>
         </div>
       </div>
     </nav>

@@ -1,5 +1,6 @@
 import { Page, Section, SectionHead } from "../components/Page";
 import { Benchmark } from "../components/Benchmark";
+import { Praxis } from "../components/Praxis";
 import { publications, research, software } from "../content/cv";
 import { threads } from "../content/profile";
 
@@ -60,6 +61,11 @@ export function Research() {
           </Section>
         );
       })}
+
+      {/* The group the voice stream is run out of. */}
+      <Section id="praxis">
+        <Praxis />
+      </Section>
 
       <Section id="software">
         <SectionHead>Software</SectionHead>

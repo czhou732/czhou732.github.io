@@ -5,6 +5,7 @@ import { Writing, EssayPage } from "./pages/Writing";
 import { Cv } from "./pages/Cv";
 import { essays } from "./content/essays";
 import { profile } from "./content/profile";
+import { praxis } from "./content/praxis";
 
 export type Route = {
   path: string;
@@ -49,6 +50,17 @@ export const routes: Route[] = [
     description: `Curriculum vitae for ${NAME}: education, honors, research experience, publications, skills, and service.`,
     element: <Cv />,
   },
+];
+
+/**
+ * Static shortlinks. These are not React routes: the prerender writes each one
+ * as a standalone meta-refresh page, so chengdongzhou.com/praxis is a stable
+ * address that can be printed on a slide and repointed from one file here.
+ */
+export type Redirect = { path: string; to: string; label: string };
+
+export const redirects: Redirect[] = [
+  { path: "/praxis/", to: praxis.href, label: praxis.full },
 ];
 
 export function routeFor(pathname: string): Route {

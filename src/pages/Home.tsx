@@ -1,5 +1,6 @@
 import { Page, Section, SectionHead } from "../components/Page";
 import { Benchmark } from "../components/Benchmark";
+import { Praxis } from "../components/Praxis";
 import { profile, threads } from "../content/profile";
 import { essays } from "../content/essays";
 import { publications, software } from "../content/cv";
@@ -78,6 +79,11 @@ export function Home() {
         </div>
 
         <Benchmark />
+      </Section>
+
+      {/* The group, given its own object because it has its own address. */}
+      <Section id="praxis">
+        <Praxis />
       </Section>
 
       {/* Three angles on one question. */}

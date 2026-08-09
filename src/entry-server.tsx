@@ -1,8 +1,12 @@
 import { renderToString } from "react-dom/server";
-import { routes, type Route } from "./routes";
+import { routes, redirects, type Route, type Redirect } from "./routes";
 
 export function allRoutes(): Route[] {
   return routes;
+}
+
+export function allRedirects(): Redirect[] {
+  return redirects;
 }
 
 export function render(path: string): string {
