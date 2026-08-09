@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Faces. Self-hosted variable subsets, no CDN.
+   Archivo carries display and body via its width axis; Martian Mono carries
+   every label and every number.
+--------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/fonts/archivo-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/fonts/archivo-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Martian Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 75% 112.5%;
+  font-display: swap;
+  src: url("/fonts/martian-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Martian Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 75% 112.5%;
+  font-display: swap;
+  src: url("/fonts/martian-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------------------------------------------------------------------------
+   Tokens.
+   Restrained: neutrals plus one accent. Brass appears on links, focus rings,
+   and the one marked band in the plot. Nowhere decorative.
+--------------------------------------------------------------------------- */
+
+@theme {
+  --color-paper: #f6f7f8;
+  --color-paper-2: #edeff1;
+  --color-ink: #141618;
+  --color-ink-2: #43484d;
+  --color-ink-3: #686f76;
+  --color-brass: #806628;
+  --color-brass-deep: #6b551f;
+
+  --font-sans: "Archivo", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "Martian Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius-sm: 2px;
+}
+
+:root {
+  --paper: #f6f7f8;
+  --paper-2: #edeff1;
+  --ink: #141618;
+  --ink-2: #43484d;
+  --ink-3: #686f76;
+  --brass: #806628;
+  --brass-deep: #6b551f;
+  --rule: rgb(20 22 24 / 0.14);
+  --rule-2: rgb(20 22 24 / 0.07);
+  --brass-wash: rgb(128 102 40 / 0.16);
+  color-scheme: light;
+}
+
+/* Designed for dark, not inverted: the ground lifts off pure black and brass
+   lifts to hold 5.4:1 against it. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #101113;
+    --paper-2: #191b1e;
+    --ink: #e9eaeb;
+    --ink-2: #a8adb2;
+    --ink-3: #797f85;
+    --brass: #c39a3e;
+    --brass-deep: #ddb55a;
+    --rule: rgb(233 234 235 / 0.16);
+    --rule-2: rgb(233 234 235 / 0.08);
+    --brass-wash: rgb(195 154 62 / 0.18);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #101113;
+  --paper-2: #191b1e;
+  --ink: #e9eaeb;
+  --ink-2: #a8adb2;
+  --ink-3: #797f85;
+  --brass: #c39a3e;
+  --brass-deep: #ddb55a;
+  --rule: rgb(233 234 235 / 0.16);
+  --rule-2: rgb(233 234 235 / 0.08);
+  --brass-wash: rgb(195 154 62 / 0.18);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --paper: #f6f7f8;
+  --paper-2: #edeff1;
+  --ink: #141618;
+  --ink-2: #43484d;
+  --ink-3: #686f76;
+  --brass: #806628;
+  --brass-deep: #6b551f;
+  --rule: rgb(20 22 24 / 0.14);
+  --rule-2: rgb(20 22 24 / 0.07);
+  --brass-wash: rgb(128 102 40 / 0.16);
+  color-scheme: light;
+}
+
+/* ---------------------------------------------------------------------------
+   Base.
+--------------------------------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+/* ---------------------------------------------------------------------------
+   Browser surfaces. The parts we did not draw still carry the design.
+--------------------------------------------------------------------------- */
+
+::selection {
+  background: var(--brass-wash);
+  color: var(--ink);
+}
+
+:root { caret-color: var(--brass); }
+
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+a {
+  color: var(--brass);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:hover { color: var(--brass-deep); }
+
+@media (prefers-reduced-motion: reduce) {
+  a { transition: none; }
+}
+
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border: 3px solid var(--paper);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }
+
+/* Every date, count, DOI and measurement lines up. */
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------------------------
+   Type roles.
+--------------------------------------------------------------------------- */
+
+.u-display {
+  font-weight: 700;
+  font-stretch: 118%;
+  letter-spacing: -0.028em;
+  line-height: 1.03;
+}
+
+.u-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+
+.u-measure { max-width: 66ch; }
+
+/* Skip link: parked offscreen, snaps in on focus. */
+.u-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+}
+.u-skip:focus {
+  left: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+}
