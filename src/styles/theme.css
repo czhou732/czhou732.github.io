@@ -210,24 +210,30 @@ a:hover { color: var(--brass-deep); }
    Type roles.
 --------------------------------------------------------------------------- */
 
-.u-display {
-  font-weight: 700;
-  font-stretch: 118%;
-  letter-spacing: -0.028em;
-  line-height: 1.03;
-}
+/* These live in the components layer so utilities still beat them. Written as
+   plain CSS after the Tailwind import they won on source order instead, which
+   silently swallowed every `normal-case` on a .u-label and shouted names,
+   DOIs and GPAs that were meant to be sentence case. */
+@layer components {
+  .u-display {
+    font-weight: 700;
+    font-stretch: 118%;
+    letter-spacing: -0.028em;
+    line-height: 1.03;
+  }
 
-.u-label {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-variant-numeric: tabular-nums;
-  color: var(--ink-3);
-}
+  .u-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3);
+  }
 
-.u-measure { max-width: 66ch; }
+  .u-measure { max-width: 66ch; }
+}
 
 /* Skip link: parked offscreen, snaps in on focus. */
 .u-skip {

@@ -3,6 +3,7 @@ import { Benchmark } from "../components/Benchmark";
 import { Praxis } from "../components/Praxis";
 import { profile, threads } from "../content/profile";
 import { essays } from "../content/essays";
+import { syllabus } from "../content/praxis";
 import { publications, software } from "../content/cv";
 
 export function Home() {
@@ -20,6 +21,13 @@ export function Home() {
       line: "The two-stream benchmark above, written up: acoustic prosody against ventral striatal BOLD, preregistered and reported with its null.",
       href: publications[0].href!,
       cta: "Read the preprint",
+    },
+    {
+      kicker: syllabus.dates,
+      title: syllabus.title,
+      line: syllabus.line,
+      href: syllabus.href,
+      cta: `${syllabus.papers} papers, ${syllabus.modules} modules`,
     },
   ];
 

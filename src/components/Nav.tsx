@@ -38,7 +38,9 @@ export function Nav({ current = "/" }: { current?: string }) {
           {profile.initials}
         </a>
 
-        <div className="flex items-center gap-[clamp(0.85rem,2.4vw,1.6rem)]">
+        {/* Gap floor is set by the 320px case: five items plus the divider
+            only clear that width once the gaps drop below 0.85rem. */}
+        <div className="flex items-center gap-[clamp(0.6rem,2.4vw,1.6rem)]">
           {ROUTES.map((r) => {
             const active = r.href === current;
             return (

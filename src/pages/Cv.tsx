@@ -6,6 +6,7 @@ import {
   research,
   service,
   skills,
+  teaching,
   type Entry,
 } from "../content/cv";
 import { profile } from "../content/profile";
@@ -155,6 +156,15 @@ export function Cv() {
             Publications and software
           </a>
         </p>
+      </Section>
+
+      <Section>
+        <SectionHead>Teaching</SectionHead>
+        <div className="flex flex-col">
+          {teaching.map((e) => (
+            <Row key={e.role} e={e} />
+          ))}
+        </div>
       </Section>
 
       <Section>

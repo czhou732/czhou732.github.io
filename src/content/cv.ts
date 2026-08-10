@@ -98,6 +98,27 @@ export const research: Entry[] = [
   },
 ];
 
+/**
+ * Teaching. Kept separate from research because PhD committees read it as a
+ * separate axis, and because designing a curriculum is a different claim from
+ * running a study.
+ */
+export const teaching: Entry[] = [
+  {
+    role: "Curriculum designer and journal-club lead",
+    org: "PRAXIS — Computational Psychiatry",
+    where: "University of Southern California",
+    dates: "Jun 2026 – present",
+    meta: "Computational Psychiatry: An Undergraduate Syllabus · CC BY 4.0 · doi 10.5281/zenodo.20559875",
+    points: [
+      "Designed a twenty-paper, five-module curriculum taking undergraduates from the founding papers of computational psychiatry through reinforcement learning, Bayesian models of psychosis, and biomarker methodology to algorithmic bias in clinical prediction.",
+      "Runs as the PRAXIS journal club across the fall semester, and is the reading sequence new members are trained on.",
+      "Published open access under CC BY 4.0 with a Zenodo DOI. Every reading is linked to its publisher record and exportable as BibTeX taken from that record rather than typed by hand.",
+      "Released bilingually in English and Simplified Chinese to lower the entry cost for students reading the literature in a second language.",
+    ],
+  },
+];
+
 export type Publication = {
   authors: string;
   year: string;
