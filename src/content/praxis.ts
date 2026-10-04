@@ -1,5 +1,5 @@
 /**
- * PRAXIS — the group he founded and leads.
+ * PRAXIS: the group he founded and leads.
  *
  * The group has its own site at uscpraxis.org. This file is the pointer to it,
  * not a second copy of it: everything here is a short fact or a link outward,

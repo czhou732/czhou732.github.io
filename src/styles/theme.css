@@ -54,92 +54,114 @@
     U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/sourceserif4-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/sourceserif4-italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/sourceserif4-semibold.woff2") format("woff2");
+}
+
 /* ---------------------------------------------------------------------------
    Tokens.
-   Restrained: neutrals plus one accent. Brass appears on links, focus rings,
-   and the one marked band in the plot. Nowhere decorative.
+   Restrained: neutral graphite on pale paper, and one accent, a quiet slate
+   blue. It appears on links, focus rings, footnote markers and the
+   voice series in the plot. Nowhere decorative.
 --------------------------------------------------------------------------- */
 
 @theme {
-  --color-paper: #f6f7f8;
-  --color-paper-2: #edeff1;
-  --color-ink: #141618;
-  --color-ink-2: #43484d;
-  --color-ink-3: #686f76;
-  --color-brass: #806628;
-  --color-brass-deep: #6b551f;
+  --color-paper: #f0f0ee;
+  --color-paper-2: #e5e5e2;
+  --color-ink: #181818;
+  --color-ink-2: #464646;
+  --color-ink-3: #5d5d5a;
+  --color-accent: #3f5565;
+  --color-accent-deep: #2c3d49;
 
   --font-sans: "Archivo", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
   --font-mono: "Martian Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   --radius-sm: 2px;
 }
 
 :root {
-  --paper: #f6f7f8;
-  --paper-2: #edeff1;
-  --ink: #141618;
-  --ink-2: #43484d;
-  --ink-3: #686f76;
-  --brass: #806628;
-  --brass-deep: #6b551f;
-  --rule: rgb(20 22 24 / 0.14);
-  --rule-2: rgb(20 22 24 / 0.07);
-  --brass-wash: rgb(128 102 40 / 0.16);
-  --band-bg: #141618;
-  --band-fg: #f6f7f8;
+  --paper: #f0f0ee;
+  --paper-2: #e5e5e2;
+  --ink: #181818;
+  --ink-2: #464646;
+  --ink-3: #5d5d5a;
+  --accent: #3f5565;
+  --accent-deep: #2c3d49;
+  --rule: rgb(24 24 24 / 0.17);
+  --rule-2: rgb(24 24 24 / 0.09);
+  --accent-wash: rgb(63 85 101 / 0.14);
+  --series-voice: #24527f;
   color-scheme: light;
 }
 
-/* Designed for dark, not inverted: the ground lifts off pure black and brass
-   lifts to hold 5.4:1 against it. */
+/* Designed for dark, not inverted: the ground lifts off pure black and the
+   slate lifts to hold 8:1 against it. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #101113;
-    --paper-2: #191b1e;
-    --ink: #e9eaeb;
-    --ink-2: #a8adb2;
-    --ink-3: #797f85;
-    --brass: #c39a3e;
-    --brass-deep: #ddb55a;
-    --rule: rgb(233 234 235 / 0.16);
-    --rule-2: rgb(233 234 235 / 0.08);
-    --brass-wash: rgb(195 154 62 / 0.18);
-    --band-bg: #191b1e;
-    --band-fg: #e9eaeb;
+    --paper: #111212;
+    --paper-2: #1a1b1b;
+    --ink: #ececea;
+    --ink-2: #bbbbb8;
+    --ink-3: #90908d;
+    --accent: #9db4c4;
+    --accent-deep: #c4d4df;
+    --rule: rgb(236 236 234 / 0.2);
+    --rule-2: rgb(236 236 234 / 0.09);
+    --accent-wash: rgb(157 180 196 / 0.18);
+    --series-voice: #86b4e6;
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --paper: #101113;
-  --paper-2: #191b1e;
-  --ink: #e9eaeb;
-  --ink-2: #a8adb2;
-  --ink-3: #797f85;
-  --brass: #c39a3e;
-  --brass-deep: #ddb55a;
-  --rule: rgb(233 234 235 / 0.16);
-  --rule-2: rgb(233 234 235 / 0.08);
-  --brass-wash: rgb(195 154 62 / 0.18);
-  --band-bg: #191b1e;
-  --band-fg: #e9eaeb;
+  --paper: #111212;
+  --paper-2: #1a1b1b;
+  --ink: #ececea;
+  --ink-2: #bbbbb8;
+  --ink-3: #90908d;
+  --accent: #9db4c4;
+  --accent-deep: #c4d4df;
+  --rule: rgb(236 236 234 / 0.2);
+  --rule-2: rgb(236 236 234 / 0.09);
+  --accent-wash: rgb(157 180 196 / 0.18);
+  --series-voice: #86b4e6;
   color-scheme: dark;
 }
 
 :root[data-theme="light"] {
-  --paper: #f6f7f8;
-  --paper-2: #edeff1;
-  --ink: #141618;
-  --ink-2: #43484d;
-  --ink-3: #686f76;
-  --brass: #806628;
-  --brass-deep: #6b551f;
-  --rule: rgb(20 22 24 / 0.14);
-  --rule-2: rgb(20 22 24 / 0.07);
-  --brass-wash: rgb(128 102 40 / 0.16);
-  --band-bg: #141618;
-  --band-fg: #f6f7f8;
+  --paper: #f0f0ee;
+  --paper-2: #e5e5e2;
+  --ink: #181818;
+  --ink-2: #464646;
+  --ink-3: #5d5d5a;
+  --accent: #3f5565;
+  --accent-deep: #2c3d49;
+  --rule: rgb(24 24 24 / 0.17);
+  --rule-2: rgb(24 24 24 / 0.09);
+  --accent-wash: rgb(63 85 101 / 0.14);
+  --series-voice: #24527f;
   color-scheme: light;
 }
 
@@ -159,17 +181,25 @@ html {
 body {
   background: var(--paper);
   color: var(--ink-2);
-  font-family: var(--font-sans);
-  font-size: 17px;
-  line-height: 1.6;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.65;
+  font-variant-numeric: lining-nums;
   font-synthesis-weight: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3 {
+  font-family: var(--font-sans);
   color: var(--ink);
   text-wrap: balance;
+}
+
+/* Controls stay sans: the serif is for reading. In the base layer so any
+   utility class (font-mono on a button) still wins. */
+@layer base {
+  button, nav { font-family: var(--font-sans); }
 }
 
 /* ---------------------------------------------------------------------------
@@ -177,26 +207,26 @@ h1, h2, h3 {
 --------------------------------------------------------------------------- */
 
 ::selection {
-  background: var(--brass-wash);
+  background: var(--accent-wash);
   color: var(--ink);
 }
 
-:root { caret-color: var(--brass); }
+:root { caret-color: var(--accent); }
 
 :focus-visible {
-  outline: 2px solid var(--brass);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
 a {
-  color: var(--brass);
+  color: var(--accent);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
   transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-a:hover { color: var(--brass-deep); }
+a:hover { color: var(--accent-deep); }
 
 @media (prefers-reduced-motion: reduce) {
   a { transition: none; }
@@ -306,7 +336,7 @@ a:hover { color: var(--brass-deep); }
   }
 }
 
-/* A brass rule draws across a row on hover: the row you are on is the row
+/* An accent rule draws across a row on hover: the row you are on is the row
    you are reading. Pointer devices only. */
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .row-hover { position: relative; }
@@ -315,7 +345,7 @@ a:hover { color: var(--brass-deep); }
     position: absolute;
     inset: -1px 0 auto 0;
     height: 1px;
-    background: var(--brass);
+    background: var(--accent);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -336,5 +366,174 @@ a:hover { color: var(--brass-deep); }
 
 .bm-details > summary { list-style: none; }
 .bm-details > summary::-webkit-details-marker { display: none; }
-.bm-details > summary::before { content: "+ "; color: var(--brass); }
+.bm-details > summary::before { content: "+ "; color: var(--accent); }
 .bm-details[open] > summary::before { content: "– "; }
+
+/* ---------------------------------------------------------------------------
+   Sandpaper grain. Fine noise over the page, a few percent strong, so the
+   paper has tooth without touching legibility. Light mode darkens, dark mode
+   lightens. A data URI, so no request.
+--------------------------------------------------------------------------- */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.6 0 0 0 -.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.09;
+  mix-blend-mode: multiply;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body::after {
+    filter: invert(1);
+    mix-blend-mode: screen;
+    opacity: 0.07;
+  }
+}
+:root[data-theme="dark"] body::after {
+  filter: invert(1);
+  mix-blend-mode: screen;
+  opacity: 0.07;
+}
+
+@media print {
+  body::after { display: none; }
+}
+
+/* Small caps for the first line of a section, journal style. */
+.u-lead::first-line {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+
+/* Footnote marker. */
+sup.fn-mark {
+  font-family: var(--font-mono);
+  font-size: 0.62em;
+  font-weight: 500;
+  line-height: 0;
+  color: var(--accent);
+  margin-left: 1px;
+  vertical-align: super;
+}
+
+/* ---------------------------------------------------------------------------
+   Laid paper with a watermark. One fixed layer behind the page: fine wire
+   lines, and a faint C·Z in the corner the way a mill marks its stock. The
+   text sits above it, so nothing is ever set on the lines' contrast.
+--------------------------------------------------------------------------- */
+
+:root { --gutter: clamp(1.15rem, 5vw, 4rem); }
+
+.laidbg {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--ink) 3.6%, transparent) 0 1px,
+    transparent 1px 4px
+  );
+}
+.laidbg::after {
+  content: "C\00B7Z";
+  position: absolute;
+  right: 4vw;
+  bottom: 2vh;
+  font: 700 clamp(9rem, 26vw, 22rem) / 0.8 var(--font-sans);
+  font-stretch: 120%;
+  letter-spacing: -0.04em;
+  color: color-mix(in srgb, var(--ink) 2.4%, transparent);
+}
+
+nav[aria-label="Primary"], #main, footer { position: relative; z-index: 2; }
+nav[aria-label="Primary"] { z-index: 50; }
+
+/* Light ink on dark ground carries more weight, so the lines step down. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .laidbg {
+    background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--ink) 2.1%, transparent) 0 1px, transparent 1px 4px);
+  }
+  :root:not([data-theme="light"]) .laidbg::after { color: color-mix(in srgb, var(--ink) 1.8%, transparent); }
+}
+:root[data-theme="dark"] .laidbg {
+  background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--ink) 2.1%, transparent) 0 1px, transparent 1px 4px);
+}
+:root[data-theme="dark"] .laidbg::after { color: color-mix(in srgb, var(--ink) 1.8%, transparent); }
+
+@media print { .laidbg { display: none; } }
+
+/* ---------------------------------------------------------------------------
+   Figure 1 as an instrument readout: millimetre paper behind the plot.
+--------------------------------------------------------------------------- */
+
+.bm-grid {
+  padding: 18px 14px 6px;
+  border: 1px solid var(--rule);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--accent) 20%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 20%, transparent) 1px, transparent 1px),
+    linear-gradient(color-mix(in srgb, var(--accent) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 8%, transparent) 1px, transparent 1px);
+  background-size: 60px 60px, 60px 60px, 12px 12px, 12px 12px;
+}
+
+/* ---------------------------------------------------------------------------
+   Signal rule: a thin trace in place of a hairline between sections. Complete
+   at rest; where the browser can link motion to scroll it draws in as it
+   enters.
+--------------------------------------------------------------------------- */
+
+.sig { position: absolute; left: var(--gutter); right: var(--gutter); top: 0; height: 30px; transform: translateY(-50%); pointer-events: none; }
+.sig svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.sig path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.75;
+  stroke-dasharray: 4000;
+  stroke-dashoffset: 0;
+}
+@keyframes sigdraw { from { stroke-dashoffset: 4000; } to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .sig path {
+      animation: sigdraw linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 90%;
+    }
+  }
+}
+
+/* Portrait: ink halftone. A true duotone of photograph and paper, then a dot
+   screen. Dark mode screens instead of multiplying so the face stays bright. */
+.duo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--paper);
+  --duo-blend: multiply;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .duo { --duo-blend: screen; } }
+:root[data-theme="dark"] .duo { --duo-blend: screen; }
+.duo img { display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.18) brightness(1.04); mix-blend-mode: var(--duo-blend); }
+.duo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at center, var(--paper) 0 34%, transparent 36%);
+  background-size: 4px 4px;
+  mix-blend-mode: screen;
+  opacity: 0.28;
+}
+
+/* Section marks and the end-of-text ornament in essays. */
+.sect-mark { font-family: var(--font-serif); font-weight: 600; color: var(--accent); margin-right: 0.55rem; }
+.orn { display: flex; justify-content: center; margin: 1.6rem 0 0.4rem; color: var(--accent); }
+.orn::before { content: ""; width: 9px; height: 9px; transform: rotate(45deg); border: 1px solid currentColor; }

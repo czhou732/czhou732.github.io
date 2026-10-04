@@ -36,7 +36,7 @@ export const education: Education[] = [
     degree: "B.A. Psychology",
     points: [
       "GPA 3.72 / 4.00",
-      "Phi Beta Kappa, Epsilon of California — inducted Spring 2026, junior year, as a transfer student",
+      "Phi Beta Kappa, Epsilon of California (inducted Spring 2026, junior year, as a transfer student)",
     ],
     coursework:
       "Behavioral Neuroscience, Statistics (PSYC 274L), Psychological Disorders, Experimental Research Methods (PSYC 314), Origins of the Mind, Neural Network Models (PSYC 450, in progress), Directed Research (PSYC 490X)",
@@ -60,7 +60,7 @@ export const honors = [
   { year: "2026", name: "Phi Beta Kappa, Epsilon of California" },
   {
     year: "2026",
-    name: "NIH Summer Internship Program Fellow — NIMH Experimental Therapeutics & Pathophysiology Branch",
+    name: "NIH Summer Internship Program Fellow, NIMH Experimental Therapeutics & Pathophysiology Branch",
   },
   { year: "2026", name: "Dornsife Experiential Learning Award" },
   { year: "2024–25", name: "Dean’s List, Arizona State University (Spring 2024 – Spring 2025)" },
@@ -129,7 +129,7 @@ export const research: Entry[] = [
 export const teaching: Entry[] = [
   {
     role: "Curriculum designer and journal-club lead",
-    org: "PRAXIS — Computational Psychiatry",
+    org: "PRAXIS, Computational Psychiatry",
     where: "University of Southern California",
     dates: "Jun 2026 – present",
     meta: "Computational Psychiatry: An Undergraduate Syllabus · CC BY 4.0 · doi 10.5281/zenodo.20559875",
@@ -281,8 +281,8 @@ export const service: Entry[] = [
 ];
 
 export const certifications = [
-  "Responsible Conduct of Research — USC (CITI Program)",
-  "Social-Behavioral Human Subjects Research — USC (CITI Program)",
-  "Nonviolent Crisis Intervention, Blue Card — Crisis Prevention Institute",
-  "Certified Personal Trainer (NASM-CPT) — National Academy of Sports Medicine",
+  "Responsible Conduct of Research, University of Southern California (CITI Program)",
+  "Social-Behavioral Human Subjects Research, University of Southern California (CITI Program)",
+  "Nonviolent Crisis Intervention (Blue Card), Crisis Prevention Institute",
+  "Certified Personal Trainer (NASM-CPT), National Academy of Sports Medicine",
 ];

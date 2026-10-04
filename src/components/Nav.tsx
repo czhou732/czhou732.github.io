@@ -54,7 +54,7 @@ export function Nav({ current = "/" }: { current?: string }) {
                 }`}
                 style={{
                   color: active ? "var(--ink)" : "var(--ink-3)",
-                  borderColor: active ? "var(--brass)" : "transparent",
+                  borderColor: active ? "var(--accent)" : "transparent",
                 }}
               >
                 {r.label}
@@ -71,7 +71,7 @@ export function Nav({ current = "/" }: { current?: string }) {
           <a
             href={praxis.href}
             className="-mx-1.5 -my-3 flex items-center gap-1 border-b px-1.5 pt-3 pb-3 font-mono text-[11px] font-medium tracking-[0.05em] no-underline"
-            style={{ color: "var(--brass)", borderColor: "transparent" }}
+            style={{ color: "var(--accent)", borderColor: "transparent" }}
           >
             {praxis.name}
             {/* Inline: U+2197 is outside the font subset we ship. */}
