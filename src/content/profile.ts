@@ -27,7 +27,7 @@ export const profile = {
     emailAlt: "czpeterzhou@gmail.com",
     github: "https://github.com/czhou732",
     linkedin: "https://linkedin.com/in/chengdong-zhou",
-    osf: "https://osf.io/4d6ey",
+    osf: "https://osf.io/bsvrj",
   },
 } as const;
 

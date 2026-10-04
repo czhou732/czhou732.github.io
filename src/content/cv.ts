@@ -1,5 +1,7 @@
 /**
- * Transcribed from Chengdong_Zhou_CV.docx (vault: 05_Academics/Admin/Profession).
+ * Transcribed from Chengdong_Zhou_CV.docx, version of 2026-09-16
+ * (vault: 05_Academics/Admin/Profession). Where the site and the CV disagree,
+ * the CV wins; change the docx first, then this file.
  * The Research and CV pages both read from here so they cannot drift apart.
  *
  * Ford Foundation Predoctoral is deliberately absent: its final cohort was
@@ -15,25 +17,40 @@ export type Entry = {
   points: string[];
 };
 
-export const education = [
+export type Education = {
+  school: string;
+  where: string;
+  dates: string;
+  degree: string;
+  points: string[];
+  coursework?: string;
+};
+
+export const education: Education[] = [
   {
     school: "University of Southern California",
     where: "Los Angeles, CA",
     dates: "Expected May 2027",
-    degree: "B.A. Psychology, Neuroscience & Clinical focus",
+    degree: "B.A. Psychology",
     points: [
-      "GPA 3.92 / 4.00",
-      "Phi Beta Kappa, Epsilon of California — inducted Spring 2026, junior year",
+      "GPA 3.72 / 4.00",
+      "Phi Beta Kappa, Epsilon of California — inducted Spring 2026, junior year, as a transfer student",
     ],
+    coursework:
+      "Behavioral Neuroscience, Statistics (PSYC 274L), Psychological Disorders, Experimental Research Methods (PSYC 314), Origins of the Mind, Neural Network Models (PSYC 450, in progress), Directed Research (PSYC 490X)",
   },
   {
     school: "Arizona State University",
     where: "Barrett, The Honors College · Tempe, AZ",
     dates: "Aug 2023 – Jun 2025",
     degree: "B.A. Psychology (transferred to USC)",
-    points: ["GPA 3.84 / 4.00", "Dean’s List, Spring 2024 – Fall 2025"],
+    points: ["GPA 3.84 / 4.00", "Dean’s List, Spring 2024 – Spring 2025"],
   },
 ];
+
+/** Verbatim from the CV's Research Interests line. */
+export const interests =
+  "Computational psychiatry; reward learning, anhedonia, and dopaminergic dysfunction; reinforcement-learning models of mood and motivation; multimodal biomarkers of psychiatric states (acoustic prosody, MEG/fMRI); neural oscillations and translational mechanisms of rapid-acting antidepressants; accessible and inclusive research design.";
 
 export const honors = [
   { year: "2026–27", name: "NIH Undergraduate Scholarship Program (UGSP) Scholar" },
@@ -44,7 +61,7 @@ export const honors = [
     name: "NIH Summer Internship Program Fellow — NIMH Experimental Therapeutics & Pathophysiology Branch",
   },
   { year: "2026", name: "Dornsife Experiential Learning Award" },
-  { year: "2024–25", name: "Dean’s List, Arizona State University" },
+  { year: "2024–25", name: "Dean’s List, Arizona State University (Spring 2024 – Spring 2025)" },
 ];
 
 export const research: Entry[] = [
@@ -55,33 +72,34 @@ export const research: Entry[] = [
     dates: "Feb 2026 – present",
     meta: "Psychiatry Research, Analytics & eXperimental Innovation Society · Faculty sponsor: Dr. Laurent Itti",
     points: [
-      "Founded and lead an undergraduate computational neuroscience group investigating acoustic biomarkers of depression through the dopaminergic reward system.",
-      "Preregistered the study on OSF (osf.io/4d6ey) and coordinated a multi-stream pipeline spanning acoustic analysis, self-report, and fMRI.",
-      "Recruited and manage two undergraduate research assistants across the acoustic and neuroimaging streams.",
-      "Built ClinicalWhisper, the open-source air-gapped transcription pipeline the group runs on sensitive clinical interviews.",
+      "Founded and led an undergraduate computational neuroscience research group investigating acoustic biomarkers of depression through the dopaminergic reward system.",
+      "Preregistered the study on the Open Science Framework (osf.io/bsvrj) and coordinated a multi-stream analysis pipeline spanning acoustic analysis, self-report, and fMRI.",
+      "Public launch in Fall 2026 with three officers, a speaker series with researchers from USC, NIMH, Stanford, Yale, and Emory, and a biweekly journal club.",
+      "Developed ClinicalWhisper, an open-source, on-device clinical speech analysis pipeline used across the group’s research streams.",
     ],
   },
   {
     role: "NIH Summer Intern",
     org: "NIMH Experimental Therapeutics & Pathophysiology Branch",
     where: "National Institutes of Health, Bethesda, MD",
-    dates: "May 2026 – present",
-    meta: "PIs: Dr. Mark Kvarta & Dr. Samika Kumar",
+    dates: "May 2026 – Aug 2026",
+    meta: "Mentors: Dr. Mark Kvarta & Dr. Samika Kumar · Branch Chief: Dr. Carlos Zarate",
     points: [
-      "Building source-localization pipelines for resting-state MEG analyses of mood-disorder neural biomarkers.",
-      "Working on gamma-band spectral power and signal complexity in the insula as candidate markers of suicidal ideation.",
+      "Built a Lempel-Ziv complexity pipeline for source-localized MEG data from 57 patients with major depressive disorder (MNE-Python on NIH Biowulf, SWARM-parallelized), testing broadband and six frequency bands at the right subgenual ACC and right anterior insula.",
+      "Exploratory analyses, not corrected for multiple comparisons, linked insula broadband complexity to MADRS severity and insula delta-band complexity to a suicidal-thoughts factor. The work contributes to a planned multimodal NIMH study (manuscript in preparation; middle author).",
     ],
   },
   {
     role: "Undergraduate Research Assistant",
-    org: "Visual & Computational Neuroscience Lab",
+    org: "iLab, Visual & Computational Neuroscience",
     where: "USC Viterbi School of Engineering",
     dates: "Oct 2025 – present",
-    meta: "PI: Dr. Laurent Itti",
+    meta: "PI: Dr. Laurent Itti · Paid, part-time, NIH-funded",
     points: [
-      "Designed and deployed a fully accessible survey pipeline in Qualtrics with custom scripting, WCAG compliant, enabling participation from 291 visually impaired respondents.",
-      "First-authoring a review paper on AI-based visual assistive technology proposing a composable AI primitives framework, with collaborators at Penn State.",
-      "Analysed the NSF and NIH funding landscape to identify deployment and sustainability pathways for AI visual aids.",
+      "Designed and deployed a fully accessible survey pipeline using Qualtrics logic flows and custom scripting, ensuring WCAG compliance and collecting 493 responses from blind and visually impaired adults (291 retained after a two-stage quality-control filter).",
+      "First author of a review paper in preparation on vision-based assistive technology, informed by the survey, with collaborators at Penn State University.",
+      "Led a pre-registered benchmark of acoustic prosody versus ventral-striatal fMRI for anhedonia classification, resulting in a first-author bioRxiv preprint (2026).",
+      "Coordinate and moderate IRB-approved Zoom focus groups with blind and visually impaired adults (pilot May 2026; monthly tier-based sessions in Fall 2026). Findings will inform live prototype testing of the AI assistive device.",
     ],
   },
   {
@@ -92,8 +110,8 @@ export const research: Entry[] = [
     meta: "PI: Dr. Stephen Read · PSYC 490X",
     points: [
       "Built a Rescorla-Wagner reinforcement learning simulation with self-derived parameters (α as dopaminergic learning rate, β as volitional effort in the inverse temperature), modelling how reward learning collapses under anhedonia.",
-      "Developed a formal framework mapping LHb-VTA circuit variables to RL parameters and their behavioural predictions, now the central analytical contribution to the lab’s review manuscript.",
-      "Synthesised literature on the LHb-VTA pathway and mTOR signalling to support hypothesis generation on rapid-acting antidepressants.",
+      "Developed a formal parameter framework mapping circuit-level variables (LHb-VTA pathway) to RL parameters and their behavioural predictions, and simulated circuit-level treatment effects (ketamine, pramipexole, rTMS).",
+      "Synthesised literature on the LHb-VTA pathway and mTOR signalling to support hypothesis generation for studies on rapid-acting antidepressants such as ketamine.",
     ],
   },
 ];
@@ -112,7 +130,9 @@ export const teaching: Entry[] = [
     meta: "Computational Psychiatry: An Undergraduate Syllabus · CC BY 4.0 · doi 10.5281/zenodo.20559875",
     points: [
       "Designed a twenty-paper, five-module curriculum taking undergraduates from the founding papers of computational psychiatry through reinforcement learning, Bayesian models of psychosis, and biomarker methodology to algorithmic bias in clinical prediction.",
-      "Runs as the PRAXIS journal club across the fall semester, and is the reading sequence new members are trained on.",
+      // Adopted and scheduled, not yet delivered: the first cohort runs Fall
+      // 2026. Say "adopted", not "runs", until there is a cohort to point at.
+      "Adopted as the PRAXIS journal-club curriculum for Fall 2026, running as nine sessions across the semester.",
       "Published open access under CC BY 4.0 with a Zenodo DOI. Every reading is linked to its publisher record and exportable as BibTeX taken from that record rather than typed by hand.",
       "Released bilingually in English and Simplified Chinese to lower the entry cost for students reading the literature in a second language.",
     ],
@@ -124,19 +144,22 @@ export type Publication = {
   year: string;
   title: string;
   venue: string;
-  status: "published" | "in-prep" | "presented";
+  status: "preprint" | "in-prep" | "presented";
   href?: string;
   doi?: string;
 };
 
+const FOUR = "Zhou, C., Wu, M., Xiang, Y., & Itti, L.";
+const BENCH =
+  "Cross-Modal Benchmarking of Acoustic Prosody and Ventral Striatal BOLD for Depression-Related Anhedonia Classification";
+
 export const publications: Publication[] = [
   {
-    authors: "Zhou, C.",
+    authors: FOUR,
     year: "2026",
-    title:
-      "Cross-Modal Benchmarking of Acoustic Prosody and Ventral Striatal BOLD for Depression-Related Anhedonia Classification",
-    venue: "bioRxiv",
-    status: "published",
+    title: `${BENCH}: A Pre-Registered Study with the ClinicalWhisper Pipeline`,
+    venue: "bioRxiv preprint, not peer reviewed",
+    status: "preprint",
     doi: "10.64898/2026.06.08.728970",
     href: "https://doi.org/10.64898/2026.06.08.728970",
   },
@@ -144,16 +167,22 @@ export const publications: Publication[] = [
     authors: "Zhou, C., et al.",
     year: "In preparation",
     title:
-      "Composable AI primitives for visual assistive devices: A needs-based review informed by 291 blind and visually impaired users",
-    venue: "Manuscript in preparation",
+      "Vision-based assistive devices: A review informed by a survey of blind and visually impaired users [working title]",
+    venue: "Manuscript in preparation, first author",
     status: "in-prep",
   },
   {
-    authors: "Zhou, C.",
+    authors: FOUR,
     year: "Jul 2026",
-    title:
-      "Cross-Modal Benchmarking of Acoustic Prosody and Ventral Striatal BOLD for Depression-Related Anhedonia Classification",
-    venue: "Computational Psychiatry Conference, Yale University",
+    title: BENCH,
+    venue: "Poster, Computational Psychiatry Conference, Yale University",
+    status: "presented",
+  },
+  {
+    authors: "Zhou, C., Kumar, S., Gilbert, J., Zarate, C., Jr., Ballard, E., & Kvarta, M.",
+    year: "Aug 2026",
+    title: "Characterizing suicidality using band-specific resting-state MEG neural complexity",
+    venue: "Poster, NIH Summer Poster Day, Bethesda, MD",
     status: "presented",
   },
   {
@@ -161,14 +190,14 @@ export const publications: Publication[] = [
     year: "Apr 2026",
     title:
       "The dopaminergic voice: Acoustic prosody vs. ventral striatal BOLD activation for anhedonia classification",
-    venue: "27th USC Undergraduate Symposium",
+    venue: "Poster, 27th USC Undergraduate Symposium",
     status: "presented",
   },
   {
     authors: "Zhou, C.",
     year: "Nov 2025",
     title: "Attentive AI visual aid for persons with visual impairment",
-    venue: "Trojan Research Association Undergraduate Symposium",
+    venue: "Poster, Trojan Research Association Undergraduate Research Symposium",
     status: "presented",
   },
 ];
@@ -178,10 +207,10 @@ export const software = [
     name: "ClinicalWhisper",
     dates: "Jan 2026 – present",
     href: "https://github.com/czhou732/Clinical-Whisper-Pipeline",
-    line: "Local-first, air-gapped clinical interview transcription and speech-biomarker pipeline. Whisper for transcription, pyannote for diarisation, OpenSMILE for eGeMAPS features.",
+    line: "Local-first pipeline for sensitive clinical interview audio: joint transcription and diarization, OpenSMILE eGeMAPSv02 acoustic features, and local LLM scoring that is documented as not yet clinically validated.",
     points: [
-      "Architected fully air-gapped so audio never leaves the machine, meeting IRB and HIPAA constraints.",
-      "Open-sourced; in use across PRAXIS research streams and adopted externally by the Rutledge Lab at Yale in August 2026.",
+      "Designed for fully on-device processing, so audio, transcripts, and results never leave the machine, supporting IRB data-privacy requirements.",
+      "Open-sourced on GitHub (Zenodo DOI 10.5281/zenodo.20559786). Used across the PRAXIS research streams and installed by researchers in the Rutledge Lab at Yale for evaluation on long clinical interviews.",
     ],
   },
 ];
@@ -189,17 +218,26 @@ export const software = [
 export const skills = [
   {
     group: "Programming",
-    items: "Python (PyTorch, scikit-learn, pandas, NumPy), R (tidyverse, ggplot2), Bash, Git, LaTeX",
+    items: "Python (scikit-learn, pandas, NumPy), Bash/Shell, Git/GitHub, LaTeX/Overleaf",
   },
   {
     group: "Modelling",
-    items: "Reinforcement-learning models, deep learning, classification and feature selection, SHAP, parameter sensitivity analysis",
+    items: "Reinforcement-learning simulation (Rescorla-Wagner), classification (logistic regression, random forest, gradient-boosted trees), cross-validation and permutation testing",
   },
-  { group: "Speech & audio", items: "OpenSMILE, librosa, Whisper, pyannote" },
-  { group: "Neuroimaging", items: "MNE-Python source localisation, fMRI, BIDS-compliant pipelines" },
-  { group: "LLMs & HPC", items: "Local air-gapped inference (Ollama, DeepSeek), NIH Biowulf, Slurm" },
-  { group: "Research tools", items: "SPSS, Qualtrics, OSF preregistration, iSTAR IRB" },
-  { group: "Languages", items: "English (fluent), Mandarin (native), Spanish (intermediate)" },
+  {
+    group: "Speech & audio",
+    items: "Acoustic feature extraction (OpenSMILE eGeMAPS), on-device transcription and diarization (ClinicalWhisper)",
+  },
+  {
+    group: "Neuroimaging",
+    items: "MEG signal-complexity analysis (virtual electrodes, band-pass/Hilbert envelope, Lempel-Ziv complexity)",
+  },
+  { group: "LLMs & HPC", items: "Local LLM inference (Ollama, MLX); NIH Biowulf, Slurm" },
+  {
+    group: "Statistics & tools",
+    items: "SPSS (GLM, ANOVA, regression), Qualtrics (scaled deployment), OSF (pre-registration), iSTAR (IRB)",
+  },
+  { group: "Languages", items: "English (native/fluent), Mandarin (native), Spanish (intermediate)" },
 ];
 
 export const service: Entry[] = [
@@ -208,7 +246,7 @@ export const service: Entry[] = [
     org: "Crisis Text Line",
     dates: "Feb 2024 – present",
     points: [
-      "De-escalated psychological crises for 200+ texters over SMS, managing 5–10 concurrent high-stakes conversations per shift.",
+      "Supported 200+ texters in crisis over 200+ volunteer hours via SMS; typically 2 concurrent conversations and about 5 texters per shift.",
     ],
   },
   {
@@ -216,7 +254,7 @@ export const service: Entry[] = [
     org: "Step Up Tutoring",
     dates: "Sep 2025 – Mar 2026",
     points: [
-      "Weekly one-to-one tutoring for underserved students, with personalised data-informed lesson plans.",
+      "Delivered weekly one-on-one tutoring to underserved students; designed personalized, data-informed lesson plans to boost reading and math comprehension.",
     ],
   },
   {
@@ -224,7 +262,7 @@ export const service: Entry[] = [
     org: "Kyo",
     dates: "Aug 2024 – Oct 2024",
     points: [
-      "Delivered ABA interventions (DTT and NET) for children with autism spectrum disorder; tracked behavioural data and documented goal mastery.",
+      "Implemented ABA interventions (DTT/NET) for children with autism spectrum disorder; tracked behavioral data and documented goal mastery.",
     ],
   },
   {
@@ -232,7 +270,7 @@ export const service: Entry[] = [
     org: "The H.E.A.R.T. Center",
     dates: "Summer 2024",
     points: [
-      "Facilitated social-emotional learning for 30+ neurodivergent children and managed behavioural de-escalation.",
+      "Facilitated social-emotional learning for 30+ neurodivergent children; managed behavioral de-escalation.",
     ],
   },
 ];

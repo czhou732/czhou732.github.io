@@ -9,7 +9,7 @@ import { benchmark, caveats, permutations } from "../content/findings";
  * numbers from the preregistered run, not an illustration of one.
  *
  * SVG rather than canvas: six rows of real text nodes read correctly at any
- * zoom, and a screen reader gets a table instead of a picture.
+ * zoom. Assistive tech gets a generated table (DataTable) instead of a picture.
  */
 
 const AXIS_LO = 0.30;
@@ -27,32 +27,61 @@ const rows = benchmark.streams.flatMap((s) =>
 
 const HEIGHT = TOP + rows.length * ROW_H + 34;
 
+const fmt = (v: number) => v.toFixed(2);
+
+/**
+ * The accessible version of the figure, generated from the same data as the
+ * drawing so the two cannot disagree. The SVG itself is hidden from assistive
+ * tech (role="img" would flatten it to one label anyway) and this table takes
+ * its place.
+ */
+function DataTable() {
+  return (
+    <table className="sr-only">
+      <caption>
+        AUC-ROC with 95 percent bootstrap confidence interval for each
+        classifier, against a chance level of {fmt(benchmark.chance)}. The best
+        voice model reached {fmt(permutations.voice.auc)} (permutation p ={" "}
+        {permutations.voice.p}, not significant after Bonferroni correction)
+        and the best fMRI model {fmt(permutations.bold.auc)} (p ={" "}
+        {permutations.bold.p}). Both are modest and neither dominates the other.
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Stream</th>
+          <th scope="col">Classifier</th>
+          <th scope="col">AUC</th>
+          <th scope="col">95% CI</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => (
+          <tr key={`${r.stream}-${r.model}`}>
+            <th scope="row">{r.streamLabel}</th>
+            <td>{r.model}</td>
+            <td>{fmt(r.auc)}</td>
+            <td>
+              {fmt(r.lo)} to {fmt(r.hi)}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
 export function Benchmark() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(880);
-  const [drawn, setDrawn] = useState(false);
 
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
-
     const ro = new ResizeObserver(([entry]) => {
       const w = entry.contentRect.width;
       if (w) setWidth(w);
     });
     ro.observe(el);
-
-    // Reduced motion gets the finished figure, not a hidden one.
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reduce.matches) {
-      setDrawn(true);
-    } else {
-      const id = requestAnimationFrame(() => setDrawn(true));
-      return () => {
-        cancelAnimationFrame(id);
-        ro.disconnect();
-      };
-    }
     return () => ro.disconnect();
   }, []);
 
@@ -69,36 +98,14 @@ export function Benchmark() {
         <svg
           width="100%"
           viewBox={`0 0 ${width} ${HEIGHT}`}
-          role="img"
-          aria-labelledby="bm-title bm-desc"
+          aria-hidden="true"
+          focusable="false"
           style={{ display: "block", overflow: "visible" }}
         >
-          <title id="bm-title">
-            Anhedonia classification accuracy, voice versus fMRI
-          </title>
-          <desc id="bm-desc">
-            Area under the ROC curve for six classifiers, with 95 percent
-            bootstrap confidence intervals, plotted against a chance line at
-            0.50. The three voice models, trained on acoustic features from
-            clinical interview audio, score 0.61 to 0.65 and sit above chance.
-            The three fMRI models, trained on nucleus accumbens activation,
-            score 0.37 to 0.45 and sit at or below chance. The voice models
-            therefore outperform the brain-imaging models on this benchmark.
-          </desc>
-
-          <clipPath id="bm-wipe">
-            <rect
-              x="0"
-              y="0"
-              height={HEIGHT}
-              width={drawn ? width : 0}
-              style={{
-                transition: "width 700ms cubic-bezier(0.16, 1, 0.3, 1)",
-              }}
-            />
-          </clipPath>
-
-          <g clipPath="url(#bm-wipe)">
+          {/* The reveal is pure CSS (.bm-draw). The resting state is the
+              finished figure, so no-JS, SSR, print and reduced motion all
+              get the whole chart. */}
+          <g className="bm-draw">
             {/* Axis ticks */}
             {TICKS.map((t) => (
               <g key={t}>
@@ -192,7 +199,7 @@ export function Benchmark() {
                     y2={y - 5}
                     stroke={color}
                     strokeWidth="1.5"
-                    opacity="0.42"
+                    opacity="0.8"
                   />
                   {[r.lo, r.hi].map((v) => (
                     <line
@@ -203,7 +210,7 @@ export function Benchmark() {
                       y2={y}
                       stroke={color}
                       strokeWidth="1.5"
-                      opacity="0.42"
+                      opacity="0.8"
                     />
                   ))}
                   {/* Point estimate */}
@@ -225,6 +232,7 @@ export function Benchmark() {
             })}
           </g>
         </svg>
+        <DataTable />
       </div>
 
       <p
@@ -249,10 +257,15 @@ export function Benchmark() {
         Fig. — AUC-ROC with 95% bootstrap CI, stratified 5-fold CV. Primary
         preregistered analysis.{" "}
         {benchmark.streams
-          .map((st) => `${st.caption}: ${st.detail}, n=${st.n}`)
+          .map(
+            (st) =>
+              `${st.caption}: ${st.detail}, n=${st.n}${
+                st.screened ? ` of ${st.screened} screened` : ""
+              }`,
+          )
           .join(". ")}
         . {caveats.join(" ")} Preregistered at{" "}
-        <a href="https://osf.io/4d6ey">osf.io/4d6ey</a>.
+        <a href="https://osf.io/bsvrj">osf.io/bsvrj</a>.
       </figcaption>
     </figure>
   );

@@ -5,7 +5,7 @@ import { publications, research, software } from "../content/cv";
 import { threads } from "../content/profile";
 
 const STATUS: Record<string, string> = {
-  published: "Preprint",
+  preprint: "Preprint",
   "in-prep": "In preparation",
   presented: "Talk / poster",
 };

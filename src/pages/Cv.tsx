@@ -2,6 +2,7 @@ import { Page, Section, SectionHead, SHELL } from "../components/Page";
 import {
   certifications,
   education,
+  interests,
   honors,
   research,
   service,
@@ -118,10 +119,23 @@ export function Cv() {
                   {ed.degree}
                 </p>
                 <p className="u-label m-0 normal-case">{ed.points.join(" · ")}</p>
+                {ed.coursework && (
+                  <p className="m-0 max-w-[64ch] text-[15px]">
+                    <span className="u-label">Coursework </span>
+                    {ed.coursework}
+                  </p>
+                )}
               </div>
             </div>
           ))}
         </div>
+      </Section>
+
+      <Section>
+        <SectionHead>Research interests</SectionHead>
+        <p className="u-measure m-0 text-[16.5px]" style={{ color: "var(--ink)" }}>
+          {interests}
+        </p>
       </Section>
 
       <Section>
