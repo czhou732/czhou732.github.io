@@ -112,6 +112,7 @@
   --rule: rgb(24 24 24 / 0.17);
   --rule-2: rgb(24 24 24 / 0.09);
   --accent-wash: rgb(63 85 101 / 0.14);
+  --series-voice: #24527f;
   color-scheme: light;
 }
 
@@ -129,6 +130,7 @@
     --rule: rgb(236 236 234 / 0.2);
     --rule-2: rgb(236 236 234 / 0.09);
     --accent-wash: rgb(157 180 196 / 0.18);
+    --series-voice: #86b4e6;
     color-scheme: dark;
   }
 }
@@ -144,6 +146,7 @@
   --rule: rgb(236 236 234 / 0.2);
   --rule-2: rgb(236 236 234 / 0.09);
   --accent-wash: rgb(157 180 196 / 0.18);
+  --series-voice: #86b4e6;
   color-scheme: dark;
 }
 
@@ -158,6 +161,7 @@
   --rule: rgb(24 24 24 / 0.17);
   --rule-2: rgb(24 24 24 / 0.09);
   --accent-wash: rgb(63 85 101 / 0.14);
+  --series-voice: #24527f;
   color-scheme: light;
 }
 

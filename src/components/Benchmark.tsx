@@ -173,7 +173,7 @@ export function Benchmark() {
             {rows.map((r, i) => {
               const y = TOP + i * ROW_H + ROW_H / 2;
               const voice = r.stream === "voice";
-              const color = voice ? "var(--accent)" : "var(--ink)";
+              const color = voice ? "var(--series-voice)" : "var(--ink)";
               const first =
                 i === 0 || rows[i - 1].stream !== r.stream;
               return (
@@ -231,7 +231,7 @@ export function Benchmark() {
                     x={valueX}
                     y={y - 1}
                     textAnchor="end"
-                    fill={voice ? "var(--accent)" : "var(--ink-2)"}
+                    fill={voice ? "var(--series-voice)" : "var(--ink-2)"}
                     style={{
                       font: '500 10.5px var(--font-mono)',
                       fontVariantNumeric: "tabular-nums",
