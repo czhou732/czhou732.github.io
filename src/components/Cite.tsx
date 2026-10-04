@@ -43,7 +43,7 @@ export function Cite() {
   }
 
   return (
-    <div className="flex flex-col gap-3">
+    <div id="cite" className="flex scroll-mt-24 flex-col gap-3">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <span className="u-label" style={{ color: "var(--ink-2)" }}>
           Cite the preprint

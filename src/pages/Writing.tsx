@@ -49,7 +49,7 @@ export function Writing() {
                 {/* A real sentence from the piece, at reading scale. */}
                 <blockquote
                   className="m-0 max-w-[56ch] border-l-2 pl-5 text-[18px] leading-[1.55]"
-                  style={{ borderColor: "var(--brass)", color: "var(--ink)" }}
+                  style={{ borderColor: "var(--accent)", color: "var(--ink)" }}
                 >
                   {e.pull}
                 </blockquote>

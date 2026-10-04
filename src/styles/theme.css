@@ -54,10 +54,34 @@
     U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/sourceserif4-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/sourceserif4-italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/sourceserif4-semibold.woff2") format("woff2");
+}
+
 /* ---------------------------------------------------------------------------
    Tokens.
-   Restrained: neutrals plus one accent. Brass appears on links, focus rings,
-   and the one marked band in the plot. Nowhere decorative.
+   Restrained: neutrals plus one accent, a deep teal. It appears on links, focus
+   rings, footnote markers and the voice series in the plot. Nowhere decorative.
 --------------------------------------------------------------------------- */
 
 @theme {
@@ -66,10 +90,11 @@
   --color-ink: #141618;
   --color-ink-2: #43484d;
   --color-ink-3: #686f76;
-  --color-brass: #806628;
-  --color-brass-deep: #6b551f;
+  --color-accent: #0f6460;
+  --color-accent-deep: #0a4a47;
 
   --font-sans: "Archivo", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
   --font-mono: "Martian Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   --radius-sm: 2px;
@@ -81,18 +106,18 @@
   --ink: #141618;
   --ink-2: #43484d;
   --ink-3: #686f76;
-  --brass: #806628;
-  --brass-deep: #6b551f;
+  --accent: #0f6460;
+  --accent-deep: #0a4a47;
   --rule: rgb(20 22 24 / 0.14);
   --rule-2: rgb(20 22 24 / 0.07);
-  --brass-wash: rgb(128 102 40 / 0.16);
+  --accent-wash: rgb(15 100 96 / 0.14);
   --band-bg: #141618;
   --band-fg: #f6f7f8;
   color-scheme: light;
 }
 
-/* Designed for dark, not inverted: the ground lifts off pure black and brass
-   lifts to hold 5.4:1 against it. */
+/* Designed for dark, not inverted: the ground lifts off pure black and the teal
+   lifts to hold 7:1 against it. */
 @media (prefers-color-scheme: dark) {
   :root {
     --paper: #101113;
@@ -100,11 +125,11 @@
     --ink: #e9eaeb;
     --ink-2: #a8adb2;
     --ink-3: #797f85;
-    --brass: #c39a3e;
-    --brass-deep: #ddb55a;
+    --accent: #4fb3ad;
+    --accent-deep: #86cfca;
     --rule: rgb(233 234 235 / 0.16);
     --rule-2: rgb(233 234 235 / 0.08);
-    --brass-wash: rgb(195 154 62 / 0.18);
+    --accent-wash: rgb(79 179 173 / 0.18);
     --band-bg: #191b1e;
     --band-fg: #e9eaeb;
     color-scheme: dark;
@@ -117,11 +142,11 @@
   --ink: #e9eaeb;
   --ink-2: #a8adb2;
   --ink-3: #797f85;
-  --brass: #c39a3e;
-  --brass-deep: #ddb55a;
+  --accent: #4fb3ad;
+  --accent-deep: #86cfca;
   --rule: rgb(233 234 235 / 0.16);
   --rule-2: rgb(233 234 235 / 0.08);
-  --brass-wash: rgb(195 154 62 / 0.18);
+  --accent-wash: rgb(79 179 173 / 0.18);
   --band-bg: #191b1e;
   --band-fg: #e9eaeb;
   color-scheme: dark;
@@ -133,11 +158,11 @@
   --ink: #141618;
   --ink-2: #43484d;
   --ink-3: #686f76;
-  --brass: #806628;
-  --brass-deep: #6b551f;
+  --accent: #0f6460;
+  --accent-deep: #0a4a47;
   --rule: rgb(20 22 24 / 0.14);
   --rule-2: rgb(20 22 24 / 0.07);
-  --brass-wash: rgb(128 102 40 / 0.16);
+  --accent-wash: rgb(15 100 96 / 0.14);
   --band-bg: #141618;
   --band-fg: #f6f7f8;
   color-scheme: light;
@@ -159,17 +184,25 @@ html {
 body {
   background: var(--paper);
   color: var(--ink-2);
-  font-family: var(--font-sans);
-  font-size: 17px;
-  line-height: 1.6;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.65;
+  font-variant-numeric: lining-nums;
   font-synthesis-weight: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3 {
+  font-family: var(--font-sans);
   color: var(--ink);
   text-wrap: balance;
+}
+
+/* Controls stay sans: the serif is for reading. In the base layer so any
+   utility class (font-mono on a button) still wins. */
+@layer base {
+  button, nav { font-family: var(--font-sans); }
 }
 
 /* ---------------------------------------------------------------------------
@@ -177,26 +210,26 @@ h1, h2, h3 {
 --------------------------------------------------------------------------- */
 
 ::selection {
-  background: var(--brass-wash);
+  background: var(--accent-wash);
   color: var(--ink);
 }
 
-:root { caret-color: var(--brass); }
+:root { caret-color: var(--accent); }
 
 :focus-visible {
-  outline: 2px solid var(--brass);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
 a {
-  color: var(--brass);
+  color: var(--accent);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
   transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-a:hover { color: var(--brass-deep); }
+a:hover { color: var(--accent-deep); }
 
 @media (prefers-reduced-motion: reduce) {
   a { transition: none; }
@@ -306,7 +339,7 @@ a:hover { color: var(--brass-deep); }
   }
 }
 
-/* A brass rule draws across a row on hover: the row you are on is the row
+/* An accent rule draws across a row on hover: the row you are on is the row
    you are reading. Pointer devices only. */
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .row-hover { position: relative; }
@@ -315,7 +348,7 @@ a:hover { color: var(--brass-deep); }
     position: absolute;
     inset: -1px 0 auto 0;
     height: 1px;
-    background: var(--brass);
+    background: var(--accent);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -336,5 +369,57 @@ a:hover { color: var(--brass-deep); }
 
 .bm-details > summary { list-style: none; }
 .bm-details > summary::-webkit-details-marker { display: none; }
-.bm-details > summary::before { content: "+ "; color: var(--brass); }
+.bm-details > summary::before { content: "+ "; color: var(--accent); }
 .bm-details[open] > summary::before { content: "– "; }
+
+/* ---------------------------------------------------------------------------
+   Sandpaper grain. Fine noise over the page, a few percent strong, so the
+   paper has tooth without touching legibility. Light mode darkens, dark mode
+   lightens. A data URI, so no request.
+--------------------------------------------------------------------------- */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.6 0 0 0 -.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.09;
+  mix-blend-mode: multiply;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body::after {
+    filter: invert(1);
+    mix-blend-mode: screen;
+    opacity: 0.07;
+  }
+}
+:root[data-theme="dark"] body::after {
+  filter: invert(1);
+  mix-blend-mode: screen;
+  opacity: 0.07;
+}
+
+@media print {
+  body::after { display: none; }
+}
+
+/* Small caps for the first line of a section, journal style. */
+.u-lead::first-line {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+
+/* Footnote marker. */
+sup.fn-mark {
+  font-family: var(--font-mono);
+  font-size: 0.62em;
+  font-weight: 500;
+  line-height: 0;
+  color: var(--accent);
+  margin-left: 1px;
+  vertical-align: super;
+}

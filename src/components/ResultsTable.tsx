@@ -21,7 +21,7 @@ export function ResultsTable() {
             Table 1. Classification of anhedonia, AUC-ROC with 95 percent bootstrap CI.
           </caption>
           <thead>
-            <tr className="u-label border-y" style={{ borderColor: "var(--rule)" }}>
+            <tr className="u-label" style={{ borderTop: "2px solid var(--ink)", borderBottom: "1px solid var(--ink)" }}>
               <th scope="col" className="py-2.5 pr-4 font-medium">Stream</th>
               <th scope="col" className="py-2.5 pr-4 font-medium">Classifier</th>
               <th scope="col" className="py-2.5 pr-4 text-right font-medium">AUC</th>
@@ -30,8 +30,9 @@ export function ResultsTable() {
             </tr>
           </thead>
           <tbody>
-            {benchmark.streams.flatMap((st) =>
+            {benchmark.streams.flatMap((st, si) =>
               st.estimates.map((e, i) => {
+                const last = si === benchmark.streams.length - 1 && i === st.estimates.length - 1;
                 const isBest = e.model === best[st.key].model;
                 return (
                   <tr
@@ -39,6 +40,7 @@ export function ResultsTable() {
                     className="tnum border-b"
                     style={{
                       borderColor: "var(--rule-2)",
+                      borderBottom: last ? "2px solid var(--ink)" : undefined,
                       color: isBest ? "var(--ink)" : "var(--ink-2)",
                     }}
                   >
