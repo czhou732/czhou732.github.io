@@ -74,7 +74,7 @@ export const research: Entry[] = [
     dates: "Feb 2026 – present",
     meta: "Psychiatry Research, Analytics & eXperimental Innovation Society · Faculty sponsor: Dr. Laurent Itti",
     points: [
-      "Founded and led an undergraduate computational neuroscience research group investigating acoustic biomarkers of depression through the dopaminergic reward system.",
+      "Founded and lead an undergraduate computational neuroscience research group investigating acoustic biomarkers of depression through the dopaminergic reward system.",
       "Preregistered the study on the Open Science Framework (osf.io/bsvrj) and coordinated a multi-stream analysis pipeline spanning acoustic analysis, self-report, and fMRI.",
       "Public launch in Fall 2026 with three officers, a speaker series with researchers from USC, NIMH, Stanford, Yale, and Emory, and a biweekly journal club.",
       "Developed ClinicalWhisper, an open-source, on-device clinical speech analysis pipeline used across the group’s research streams.",
