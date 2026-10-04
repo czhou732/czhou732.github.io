@@ -80,19 +80,19 @@
 
 /* ---------------------------------------------------------------------------
    Tokens.
-   Restrained: warm stone paper, blue-black ink, and one accent, the ink blue of
-   a fountain pen. It appears on links, focus rings, footnote markers and the
+   Restrained: neutral graphite on pale paper, and one accent, a quiet slate
+   blue. It appears on links, focus rings, footnote markers and the
    voice series in the plot. Nowhere decorative.
 --------------------------------------------------------------------------- */
 
 @theme {
-  --color-paper: #ebe8e1;
-  --color-paper-2: #e0ddd5;
-  --color-ink: #1b1a18;
-  --color-ink-2: #45433e;
-  --color-ink-3: #605d56;
-  --color-accent: #23406b;
-  --color-accent-deep: #172c4d;
+  --color-paper: #f0f0ee;
+  --color-paper-2: #e5e5e2;
+  --color-ink: #181818;
+  --color-ink-2: #464646;
+  --color-ink-3: #5d5d5a;
+  --color-accent: #3f5565;
+  --color-accent-deep: #2c3d49;
 
   --font-sans: "Archivo", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
@@ -102,62 +102,62 @@
 }
 
 :root {
-  --paper: #ebe8e1;
-  --paper-2: #e0ddd5;
-  --ink: #1b1a18;
-  --ink-2: #45433e;
-  --ink-3: #605d56;
-  --accent: #23406b;
-  --accent-deep: #172c4d;
-  --rule: rgb(27 26 24 / 0.17);
-  --rule-2: rgb(27 26 24 / 0.09);
-  --accent-wash: rgb(35 64 107 / 0.14);
+  --paper: #f0f0ee;
+  --paper-2: #e5e5e2;
+  --ink: #181818;
+  --ink-2: #464646;
+  --ink-3: #5d5d5a;
+  --accent: #3f5565;
+  --accent-deep: #2c3d49;
+  --rule: rgb(24 24 24 / 0.17);
+  --rule-2: rgb(24 24 24 / 0.09);
+  --accent-wash: rgb(63 85 101 / 0.14);
   color-scheme: light;
 }
 
-/* Designed for dark, not inverted: the ground lifts off pure black, warm like
-   the paper it comes from, and the ink blue lifts to hold 8:1 against it. */
+/* Designed for dark, not inverted: the ground lifts off pure black and the
+   slate lifts to hold 8:1 against it. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #121110;
-    --paper-2: #1b1a18;
-    --ink: #ebe8e1;
-    --ink-2: #bdb9b0;
-    --ink-3: #928e85;
-    --accent: #8fadda;
-    --accent-deep: #b9cdea;
-    --rule: rgb(235 232 225 / 0.2);
-    --rule-2: rgb(235 232 225 / 0.09);
-    --accent-wash: rgb(143 173 218 / 0.18);
+    --paper: #111212;
+    --paper-2: #1a1b1b;
+    --ink: #ececea;
+    --ink-2: #bbbbb8;
+    --ink-3: #90908d;
+    --accent: #9db4c4;
+    --accent-deep: #c4d4df;
+    --rule: rgb(236 236 234 / 0.2);
+    --rule-2: rgb(236 236 234 / 0.09);
+    --accent-wash: rgb(157 180 196 / 0.18);
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --paper: #121110;
-  --paper-2: #1b1a18;
-  --ink: #ebe8e1;
-  --ink-2: #bdb9b0;
-  --ink-3: #928e85;
-  --accent: #8fadda;
-  --accent-deep: #b9cdea;
-  --rule: rgb(235 232 225 / 0.2);
-  --rule-2: rgb(235 232 225 / 0.09);
-  --accent-wash: rgb(143 173 218 / 0.18);
+  --paper: #111212;
+  --paper-2: #1a1b1b;
+  --ink: #ececea;
+  --ink-2: #bbbbb8;
+  --ink-3: #90908d;
+  --accent: #9db4c4;
+  --accent-deep: #c4d4df;
+  --rule: rgb(236 236 234 / 0.2);
+  --rule-2: rgb(236 236 234 / 0.09);
+  --accent-wash: rgb(157 180 196 / 0.18);
   color-scheme: dark;
 }
 
 :root[data-theme="light"] {
-  --paper: #ebe8e1;
-  --paper-2: #e0ddd5;
-  --ink: #1b1a18;
-  --ink-2: #45433e;
-  --ink-3: #605d56;
-  --accent: #23406b;
-  --accent-deep: #172c4d;
-  --rule: rgb(27 26 24 / 0.17);
-  --rule-2: rgb(27 26 24 / 0.09);
-  --accent-wash: rgb(35 64 107 / 0.14);
+  --paper: #f0f0ee;
+  --paper-2: #e5e5e2;
+  --ink: #181818;
+  --ink-2: #464646;
+  --ink-3: #5d5d5a;
+  --accent: #3f5565;
+  --accent-deep: #2c3d49;
+  --rule: rgb(24 24 24 / 0.17);
+  --rule-2: rgb(24 24 24 / 0.09);
+  --accent-wash: rgb(63 85 101 / 0.14);
   color-scheme: light;
 }
 
