@@ -40,9 +40,9 @@ function Masthead() {
             className="m-0 max-w-[54ch] text-[17px]"
             style={{ color: "var(--band-fg)", opacity: 0.82 }}
           >
-            Computational psychiatry. Reward learning, anhedonia, and multimodal
-            biomarkers of psychiatric state — acoustic prosody, MEG, fMRI — plus
-            accessible and inclusive research design.
+            Computational psychiatry: reward learning, anhedonia, and multimodal
+            biomarkers of psychiatric state (acoustic prosody, MEG, fMRI), with a
+            commitment to accessible and inclusive research design.
           </p>
           <p
             className="m-0 font-mono text-[10.5px] tracking-[0.08em] uppercase"

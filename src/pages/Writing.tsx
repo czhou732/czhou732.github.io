@@ -11,9 +11,9 @@ export function Writing() {
             Four essays, written in one semester.
           </h1>
           <p className="u-measure m-0">
-            Two on the things I study from the outside — how ketamine gets
-            reported, how attention gets sold. Two on the San Gabriel Valley,
-            which is where I am from and the reason I think about who gets
+            Two on the things I study from the outside: how ketamine gets
+            reported and how attention gets sold. Two on the San Gabriel
+            Valley, where I am from and the reason I think about who gets
             counted.
           </p>
         </div>

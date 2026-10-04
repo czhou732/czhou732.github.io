@@ -1,7 +1,7 @@
 /**
  * The preregistered two-stream benchmark (osf.io/bsvrj).
  *
- * SOURCE OF TRUTH: the manuscript itself —
+ * SOURCE OF TRUTH: the manuscript itself:
  *   ~/Research/Labs/NSG/Dopaminergic_Voice/overleaf_audit/main.tex
  *   Stream A primary: Table 1 (tab:stream_a_results)
  *   Stream B:         Results § (n = 234 after exclusions from 272 screened)
@@ -9,7 +9,7 @@
  *
  * These are the PRIMARY preregistered numbers: participant speech only, after
  * pyannote diarization. Do not substitute the numbers in
- * Results/Stream_A/classification_results.json — that file is the exploratory
+ * Results/Stream_A/classification_results.json. That file is the exploratory
  * full-interview sensitivity run (OSF §5.5, no diarization) and reports a
  * higher 0.651, which is not the preregistered result.
  */

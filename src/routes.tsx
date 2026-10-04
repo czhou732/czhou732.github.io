@@ -26,27 +26,27 @@ export const routes: Route[] = [
   },
   {
     path: "/research/",
-    title: `Research — ${NAME}`,
+    title: `Research | ${NAME}`,
     description:
       "Reward-learning models, acoustic biomarkers of anhedonia, MEG markers of suicidal ideation, and the ClinicalWhisper pipeline. Publications and preprints.",
     element: <Research />,
   },
   {
     path: "/writing/",
-    title: `Writing — ${NAME}`,
+    title: `Writing | ${NAME}`,
     description:
       "Essays on ketamine reporting, the attention economy, and the San Gabriel Valley.",
     element: <Writing />,
   },
   ...essays.map((e) => ({
     path: `/writing/${e.slug}/`,
-    title: `${e.title} — ${NAME}`,
+    title: `${e.title} | ${NAME}`,
     description: `${e.subtitle}. ${e.pull}`,
     element: <EssayPage slug={e.slug} />,
   })),
   {
     path: "/cv/",
-    title: `CV — ${NAME}`,
+    title: `CV | ${NAME}`,
     description: `Curriculum vitae for ${NAME}: education, honors, research experience, publications, skills, and service.`,
     element: <Cv />,
   },
