@@ -17,10 +17,11 @@ export const profile = {
 
   /**
    * The accessibility throughline, stated once, above the three threads.
-   * Public narrative approved: father's blindness, first-gen / SGV.
+   * It makes the argument without naming a family member's health: Peter chose the lighter wording on 2026-10-04. The personal story
+   * belongs in statements and essays, where he controls the framing.
    */
   throughline:
-    "My father is legally blind from retinal\u00a0atrophy and cannot fill out a visual analog scale, which is how most of psychiatry still measures how a person feels, so I build instruments that do not require the patient to be a reliable narrator of their own symptoms.",
+    "Most of psychiatry still measures how a person feels with a visual analog scale that a blind patient cannot fill out, so I build instruments that do not require the patient to be a reliable narrator of their own symptoms.",
 
   contact: {
     email: "czhou732@usc.edu",
