@@ -16,7 +16,7 @@ import { profile } from "../content/profile";
 /** The scroll's one committed region: ink field, paper type, once. */
 function Masthead() {
   return (
-    <div style={{ background: "var(--ink)", color: "var(--paper)" }}>
+    <div style={{ background: "var(--band-bg)", color: "var(--band-fg)" }}>
       <div className={`${SHELL} py-[clamp(2.5rem,6vw,4rem)]`}>
         <div className="flex flex-col gap-7 sm:flex-row sm:items-start sm:gap-10">
           {/* Full colour, no grayscale-until-hover: that trick hides the
@@ -32,13 +32,13 @@ function Masthead() {
         <div className="flex flex-col gap-5">
           <h1
             className="u-display m-0 max-w-[18ch] text-[clamp(1.8rem,3.4vw,2.5rem)]"
-            style={{ color: "var(--paper)" }}
+            style={{ color: "var(--band-fg)" }}
           >
             {profile.name}
           </h1>
           <p
             className="m-0 max-w-[54ch] text-[17px]"
-            style={{ color: "var(--paper)", opacity: 0.82 }}
+            style={{ color: "var(--band-fg)", opacity: 0.82 }}
           >
             Computational psychiatry. Reward learning, anhedonia, and multimodal
             biomarkers of psychiatric state — acoustic prosody, MEG, fMRI — plus
@@ -46,7 +46,7 @@ function Masthead() {
           </p>
           <p
             className="m-0 font-mono text-[10.5px] tracking-[0.08em] uppercase"
-            style={{ color: "var(--paper)", opacity: 0.7 }}
+            style={{ color: "var(--band-fg)", opacity: 0.7 }}
           >
             {profile.contact.email} · Los Angeles, CA
           </p>
@@ -167,7 +167,7 @@ export function Cv() {
           ))}
         </div>
         <p className="m-0">
-          <a href="/research/" className="font-mono text-[10.5px] tracking-[0.08em] uppercase">
+          <a href="/research/" className="u-hit font-mono text-[10.5px] tracking-[0.08em] uppercase">
             Table 1, software and project detail
           </a>
         </p>

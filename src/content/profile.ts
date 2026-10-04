@@ -61,7 +61,7 @@ export const threads: Thread[] = [
     key: "circuit",
     title: "Circuit",
     lab: "NIMH · Experimental Therapeutics",
-    line: "What the circuit is doing while it happens. MEG source localization, gamma-band power, and signal complexity in the insula as a marker of suicidal ideation.",
+    line: "What the circuit is doing while it happens. MEG source localization and Lempel-Ziv signal complexity in the insula, explored as a correlate of suicidal thoughts.",
     href: "/research/#circuit",
   },
 ];

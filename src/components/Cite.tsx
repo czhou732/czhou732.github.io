@@ -1,13 +1,15 @@
 import { useRef, useState } from "react";
+import { publications } from "../content/cv";
 
+const pub = publications[0];
+
+/** Built from cv.ts so the BibTeX cannot disagree with the reference list. */
 const BIBTEX = `@article{zhou2026crossmodal,
-  author  = {Zhou, C. and Wu, M. and Xiang, Y. and Itti, L.},
-  title   = {Cross-Modal Benchmarking of Acoustic Prosody and Ventral Striatal
-             BOLD for Depression-Related Anhedonia Classification: A
-             Pre-Registered Study with the ClinicalWhisper Pipeline},
+  author  = {${pub.authors.replace(/, & /g, ", ").replace(/\., /g, ". and ").replace(/\. and &/g, ". and")}},
+  title   = {${pub.title}},
   journal = {bioRxiv},
-  year    = {2026},
-  doi     = {10.64898/2026.06.08.728970},
+  year    = {${pub.year}},
+  doi     = {${pub.doi}},
   note    = {Preprint, not peer reviewed}
 }`;
 
@@ -19,6 +21,7 @@ const BIBTEX = `@article{zhou2026crossmodal,
 export function Cite() {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
   const preRef = useRef<HTMLPreElement>(null);
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   async function copy() {
     const pre = preRef.current;
@@ -35,7 +38,8 @@ export function Cite() {
       }
       setState("failed");
     }
-    setTimeout(() => setState("idle"), 2200);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setState("idle"), 4000);
   }
 
   return (
@@ -49,10 +53,12 @@ export function Cite() {
           onClick={copy}
           className="cursor-pointer border px-3 py-2 font-mono text-[10.5px] tracking-[0.1em] uppercase"
           style={{ borderColor: "var(--rule)", color: "var(--ink)", background: "transparent", borderRadius: 2 }}
-          aria-live="polite"
         >
           {state === "copied" ? "Copied" : state === "failed" ? "Press Cmd/Ctrl+C" : "Copy BibTeX"}
         </button>
+        <span role="status" className="sr-only">
+          {state === "copied" ? "BibTeX copied" : state === "failed" ? "Selected. Press Command or Control C to copy." : ""}
+        </span>
       </div>
       <pre
         ref={preRef}

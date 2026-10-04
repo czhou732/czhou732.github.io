@@ -35,7 +35,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`${SHELL} scroll-mt-24 py-[clamp(2.5rem,6vw,4rem)] ${first ? "" : "border-t"}`}
+      className={`${SHELL} scroll-mt-24 py-[clamp(2.5rem,6vw,4rem)] ${first ? "" : "reveal border-t"}`}
       style={first ? undefined : { borderColor: "var(--rule-2)" }}
     >
       <div className="flex flex-col gap-[clamp(1.5rem,3.5vw,2.4rem)]">{children}</div>

@@ -129,13 +129,13 @@ export function PraxisStrip() {
         <p className="m-0 max-w-[62ch] text-[15.5px]">
           {praxis.full}. I founded the group in February 2026 and lead it: original
           studies, preregistered, with null results published. Faculty sponsor,{" "}
-          {praxis.facts[2].value}.
+          {praxis.facts.find((f) => f.label === "Sponsor")?.value}.
         </p>
         <div className="flex flex-wrap gap-x-6 gap-y-1">
-          <a href="/research/#praxis" className="font-mono text-[10.5px] tracking-[0.08em] uppercase">
+          <a href="/research/#praxis" className="u-hit font-mono text-[10.5px] tracking-[0.08em] uppercase">
             What the group runs
           </a>
-          <a href={praxis.href} className="font-mono text-[10.5px] tracking-[0.08em] uppercase">
+          <a href={praxis.href} className="u-hit font-mono text-[10.5px] tracking-[0.08em] uppercase">
             {praxis.display}
           </a>
         </div>

@@ -86,6 +86,8 @@
   --rule: rgb(20 22 24 / 0.14);
   --rule-2: rgb(20 22 24 / 0.07);
   --brass-wash: rgb(128 102 40 / 0.16);
+  --band-bg: #141618;
+  --band-fg: #f6f7f8;
   color-scheme: light;
 }
 
@@ -103,6 +105,8 @@
     --rule: rgb(233 234 235 / 0.16);
     --rule-2: rgb(233 234 235 / 0.08);
     --brass-wash: rgb(195 154 62 / 0.18);
+    --band-bg: #191b1e;
+    --band-fg: #e9eaeb;
     color-scheme: dark;
   }
 }
@@ -118,6 +122,8 @@
   --rule: rgb(233 234 235 / 0.16);
   --rule-2: rgb(233 234 235 / 0.08);
   --brass-wash: rgb(195 154 62 / 0.18);
+  --band-bg: #191b1e;
+  --band-fg: #e9eaeb;
   color-scheme: dark;
 }
 
@@ -132,6 +138,8 @@
   --rule: rgb(20 22 24 / 0.14);
   --rule-2: rgb(20 22 24 / 0.07);
   --brass-wash: rgb(128 102 40 / 0.16);
+  --band-bg: #141618;
+  --band-fg: #f6f7f8;
   color-scheme: light;
 }
 
@@ -251,17 +259,82 @@ a:hover { color: var(--brass-deep); }
 }
 
 /* ---------------------------------------------------------------------------
-   Chart reveal. The figure is complete at rest; motion only runs when the
-   visitor has not asked for less of it.
+   Motion. Everything below is CSS, runs once, and rests in the finished state,
+   so no-JS, print, thumbnails and reduced-motion visitors get the whole page.
+   One idea: things arrive in the order they should be read.
 --------------------------------------------------------------------------- */
 
-@media (prefers-reduced-motion: no-preference) {
-  .bm-draw {
-    animation: bm-wipe 900ms cubic-bezier(0.16, 1, 0.3, 1) 120ms backwards;
-  }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
 }
 
 @keyframes bm-wipe {
   from { clip-path: inset(-20px 100% -20px -20px); }
   to   { clip-path: inset(-20px -20px -20px -20px); }
 }
+
+@keyframes bm-pop {
+  from { opacity: 0; transform: scale(0.2); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Load sequence: staggered by --i. */
+  .rise {
+    animation: rise 760ms cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i, 0) * 85ms) backwards;
+  }
+
+  /* Chart: the interval draws left to right, then each estimate lands. */
+  .bm-draw {
+    animation: bm-wipe 1100ms cubic-bezier(0.16, 1, 0.3, 1) 320ms backwards;
+  }
+  .bm-dot {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: bm-pop 420ms cubic-bezier(0.34, 1.56, 0.64, 1) calc(520ms + var(--i, 0) * 110ms) backwards;
+  }
+
+  /* Sections ease in as they enter, where the browser can link motion to
+     scroll. Elsewhere they simply sit there, which is fine. */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 32%;
+    }
+  }
+}
+
+/* A brass rule draws across a row on hover: the row you are on is the row
+   you are reading. Pointer devices only. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .row-hover { position: relative; }
+  .row-hover::before {
+    content: "";
+    position: absolute;
+    inset: -1px 0 auto 0;
+    height: 1px;
+    background: var(--brass);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .row-hover:hover::before { transform: scaleX(1); }
+}
+
+/* Standalone mono links are 10.5px type; grow the hit area to 44px without
+   moving anything. */
+@layer components {
+  .u-hit {
+    display: inline-block;
+    padding-block: 0.85rem;
+    margin-block: -0.85rem;
+  }
+}
+
+.bm-details > summary { list-style: none; }
+.bm-details > summary::-webkit-details-marker { display: none; }
+.bm-details > summary::before { content: "+ "; color: var(--brass); }
+.bm-details[open] > summary::before { content: "– "; }

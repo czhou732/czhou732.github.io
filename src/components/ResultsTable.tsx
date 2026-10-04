@@ -42,16 +42,20 @@ export function ResultsTable() {
                       color: isBest ? "var(--ink)" : "var(--ink-2)",
                     }}
                   >
-                    <th scope="row" className="py-2.5 pr-4 text-left font-normal">
-                      {i === 0 && (
+                    {i === 0 && (
+                      <th
+                        scope="rowgroup"
+                        rowSpan={st.estimates.length}
+                        className="py-2.5 pr-4 text-left align-top font-normal"
+                      >
                         <span className="flex flex-col">
                           <span className="font-mono text-[11px] font-semibold tracking-[0.08em] uppercase" style={{ color: "var(--ink)" }}>
                             {st.label}
                           </span>
                           <span className="u-label normal-case">n = {st.n}</span>
                         </span>
-                      )}
-                    </th>
+                      </th>
+                    )}
                     <td className="py-2.5 pr-4">{e.model}</td>
                     <td className="py-2.5 pr-4 text-right font-mono text-[13px]">{fmt(e.auc)}</td>
                     <td className="py-2.5 pr-4 text-right font-mono text-[13px]">

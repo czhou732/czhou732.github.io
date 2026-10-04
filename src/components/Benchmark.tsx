@@ -1,3 +1,4 @@
+import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { benchmark, keyCaveats, methodCaveats, permutations } from "../content/findings";
 
@@ -29,15 +30,24 @@ const HEIGHT = TOP + rows.length * ROW_H + 34;
 
 const fmt = (v: number) => v.toFixed(2);
 
+/** Narrow screens: initials, with the key printed under the figure. */
+const ABBR: Record<string, string> = {
+  "Random forest": "RF",
+  "Gradient boosted": "GB",
+  "Logistic regression": "LR",
+};
+
 /**
- * The accessible version of the figure, generated from the same data as the
+ * The accessible version of the figure (wrapped in a clipped div: a table
+ * ignores sr-only's 1px width and would otherwise stretch the page sideways), generated from the same data as the
  * drawing so the two cannot disagree. The SVG itself is hidden from assistive
  * tech (role="img" would flatten it to one label anyway) and this table takes
  * its place.
  */
 function DataTable() {
   return (
-    <table className="sr-only">
+    <div className="sr-only">
+    <table>
       <caption>
         AUC-ROC with 95 percent bootstrap confidence interval for each
         classifier, against a chance level of {fmt(benchmark.chance)}. The best
@@ -67,6 +77,7 @@ function DataTable() {
         ))}
       </tbody>
     </table>
+    </div>
   );
 }
 
@@ -188,7 +199,7 @@ export function Benchmark() {
                       letterSpacing: "0.04em",
                     }}
                   >
-                    {compact ? r.model.split(" ")[0] : r.model}
+                    {compact ? ABBR[r.model] ?? r.model : r.model}
                   </text>
 
                   {/* 95% CI */}
@@ -214,7 +225,7 @@ export function Benchmark() {
                     />
                   ))}
                   {/* Point estimate */}
-                  <circle cx={xc(r.auc)} cy={y - 5} r="4" fill={color} />
+                  <circle className="bm-dot" style={{ "--i": i } as React.CSSProperties} cx={xc(r.auc)} cy={y - 5} r="4" fill={color} />
                   <text
                     x={valueX}
                     y={y - 1}
@@ -271,7 +282,8 @@ export function Benchmark() {
         className="m-0 max-w-[76ch] font-mono text-[11px] leading-relaxed"
         style={{ color: "var(--ink-3)" }}
       >
-        <b style={{ color: "var(--ink-2)", fontWeight: 600 }}>Fig. 1</b> AUC-ROC with 95%
+        <b style={{ color: "var(--ink-2)", fontWeight: 600 }}>Fig. 1</b>{" "}
+        <span className="sm:hidden">RF random forest · GB gradient boosted · LR logistic regression. </span>AUC-ROC with 95%
         bootstrap CI, stratified 5-fold CV. Primary preregistered analysis,{" "}
         <a href="https://osf.io/bsvrj">osf.io/bsvrj</a>.
       </figcaption>

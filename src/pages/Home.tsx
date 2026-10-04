@@ -1,3 +1,4 @@
+import type React from "react";
 import { Page, Section, SectionHead } from "../components/Page";
 import { Benchmark } from "../components/Benchmark";
 import { PraxisStrip } from "../components/Praxis";
@@ -31,11 +32,11 @@ export function Home() {
         <div className="flex flex-col gap-4">
           {/* Sized so the question holds two lines from 1024px up.
               42px is the measured 3-line threshold at full container width. */}
-          <h1 className="u-display m-0 text-[clamp(1.75rem,3.3vw,2.3rem)]">
+          <h1 className="u-display rise m-0 text-[clamp(1.5rem,3.3vw,2.3rem)]">
             {profile.question}
           </h1>
 
-          <p className="m-0 max-w-[54ch] text-[17.5px]">
+          <p className="rise m-0 max-w-[54ch] text-[17.5px]" style={{ "--i": 1 } as React.CSSProperties}>
             In our preregistered benchmark it matched the scan:{" "}
             <span className="tnum" style={{ color: "var(--ink)" }}>
               0.63
@@ -47,7 +48,7 @@ export function Home() {
             . Neither cleared the bar convincingly.
           </p>
 
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <div className="rise flex flex-wrap items-baseline gap-x-3 gap-y-1" style={{ "--i": 2 } as React.CSSProperties}>
             <span className="u-label" style={{ color: "var(--ink-2)" }}>
               {profile.name}
             </span>
@@ -62,7 +63,7 @@ export function Home() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-2.5">
+        <div className="rise flex flex-wrap gap-2.5" style={{ "--i": 3 } as React.CSSProperties}>
           <a
             href={publications[0].href}
             className="rounded-[2px] px-5 py-3 font-mono text-[10.5px] tracking-[0.1em] uppercase no-underline transition-colors duration-200"
@@ -79,7 +80,9 @@ export function Home() {
           </a>
         </div>
 
-        <Benchmark />
+        <div className="rise" style={{ "--i": 4 } as React.CSSProperties}>
+          <Benchmark />
+        </div>
       </Section>
 
       {/* Three angles on one question. */}
@@ -93,7 +96,7 @@ export function Home() {
           {threads.map((t) => (
             <div
               key={t.key}
-              className="grid grid-cols-[5.5rem_1fr] gap-x-5 gap-y-1.5 border-t py-5 first:border-t-0 first:pt-0 sm:grid-cols-[9rem_1fr] sm:gap-x-8"
+              className="row-hover grid grid-cols-[5.5rem_1fr] gap-x-5 gap-y-1.5 border-t py-5 first:border-t-0 first:pt-0 sm:grid-cols-[9rem_1fr] sm:gap-x-8"
               style={{ borderColor: "var(--rule-2)" }}
             >
               <dt className="flex flex-col gap-1.5">
@@ -109,7 +112,7 @@ export function Home() {
                 <p className="m-0 max-w-[58ch] text-[15.5px]">{t.line}</p>
                 {/* Unique link text: three links reading "Detail" are
                     meaningless to anyone listing links out of context. */}
-                <a href={t.href} className="font-mono text-[10.5px] tracking-[0.08em] uppercase">
+                <a href={t.href} className="u-hit font-mono text-[10.5px] tracking-[0.08em] uppercase">
                   Read the {t.title.toLowerCase()} work
                 </a>
               </dd>
@@ -125,7 +128,7 @@ export function Home() {
           {selected.map((s) => (
             <li
               key={s.title}
-              className="grid gap-x-8 gap-y-3 border-t py-6 first:border-t-0 first:pt-0 sm:grid-cols-[9rem_1fr]"
+              className="row-hover grid gap-x-8 gap-y-3 border-t py-6 first:border-t-0 first:pt-0 sm:grid-cols-[9rem_1fr]"
               style={{ borderColor: "var(--rule-2)" }}
             >
               <span className="u-label tnum" style={{ color: "var(--ink-2)" }}>
@@ -136,7 +139,7 @@ export function Home() {
                   {s.title}
                 </h3>
                 <p className="m-0 max-w-[62ch] text-[15.5px]">{s.line}</p>
-                <a href={s.href} className="font-mono text-[10.5px] tracking-[0.08em] uppercase">
+                <a href={s.href} className="u-hit font-mono text-[10.5px] tracking-[0.08em] uppercase">
                   {s.cta}
                 </a>
               </div>
@@ -157,7 +160,7 @@ export function Home() {
           {essays.slice(0, 3).map((e) => (
             <li
               key={e.slug}
-              className="grid gap-x-8 gap-y-3 border-t py-6 first:border-t-0 first:pt-0 sm:grid-cols-[9rem_1fr]"
+              className="row-hover grid gap-x-8 gap-y-3 border-t py-6 first:border-t-0 first:pt-0 sm:grid-cols-[9rem_1fr]"
               style={{ borderColor: "var(--rule-2)" }}
             >
               <span className="u-label tnum" style={{ color: "var(--ink-2)" }}>
@@ -172,7 +175,7 @@ export function Home() {
                 </blockquote>
                 <a
                   href={`/writing/${e.slug}/`}
-                  className="font-mono text-[10.5px] tracking-[0.08em] uppercase"
+                  className="u-hit font-mono text-[10.5px] tracking-[0.08em] uppercase"
                 >
                   {e.title}
                 </a>
@@ -181,7 +184,7 @@ export function Home() {
           ))}
         </ol>
         <p className="m-0">
-          <a href="/writing/" className="font-mono text-[10.5px] tracking-[0.08em] uppercase">
+          <a href="/writing/" className="u-hit font-mono text-[10.5px] tracking-[0.08em] uppercase">
             All four essays
           </a>
         </p>
