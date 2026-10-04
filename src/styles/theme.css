@@ -292,7 +292,7 @@ a:hover { color: var(--brass-deep); }
   .bm-dot {
     transform-box: fill-box;
     transform-origin: center;
-    animation: bm-pop 420ms cubic-bezier(0.34, 1.56, 0.64, 1) calc(520ms + var(--i, 0) * 110ms) backwards;
+    animation: bm-pop 420ms cubic-bezier(0.16, 1, 0.3, 1) calc(520ms + var(--i, 0) * 110ms) backwards;
   }
 
   /* Sections ease in as they enter, where the browser can link motion to
