@@ -141,7 +141,7 @@ export function Home() {
       </Section>
 
       {/* Three angles on one question. */}
-      <Section id="threads">
+      <Section id="threads" signal={1}>
         <Row
           side={
             <Side label="Why three">
@@ -183,7 +183,7 @@ export function Home() {
       </Section>
 
       {/* Reference-list form: what exists, cited like it would be elsewhere. */}
-      <Section id="work">
+      <Section id="work" signal={2}>
         <Row
           side={
             <Side label={praxis.name}>
@@ -224,7 +224,7 @@ export function Home() {
       </Section>
 
       {/* Writing, led by real sentences rather than summaries. */}
-      <Section id="writing">
+      <Section id="writing" signal={3}>
         <SectionHead>Writing</SectionHead>
         <ol className="m-0 flex list-none flex-col p-0">
           {essays.slice(0, 3).map((e) => (

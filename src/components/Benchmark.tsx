@@ -105,6 +105,7 @@ export function Benchmark() {
 
   return (
     <figure className="m-0 flex flex-col gap-3">
+      <div className="bm-grid">
       <div ref={wrapRef} className="w-full">
         <svg
           width="100%"
@@ -244,6 +245,7 @@ export function Benchmark() {
           </g>
         </svg>
         <DataTable />
+      </div>
       </div>
 
 

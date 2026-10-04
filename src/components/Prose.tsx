@@ -5,6 +5,7 @@
  */
 export function Prose({ body }: { body: string }) {
   const blocks = body.split(/\n\n+/).map((b) => b.trim()).filter(Boolean);
+  let section = 0;
 
   return (
     <div className="flex flex-col gap-6">
@@ -15,6 +16,7 @@ export function Prose({ body }: { body: string }) {
               key={i}
               className="mt-6 mb-0 max-w-[34ch] text-[1.18rem] leading-snug font-semibold tracking-[-0.014em] [font-stretch:106%]"
             >
+              <span className="sect-mark">§&nbsp;{++section}</span>
               {block.slice(3)}
             </h2>
           );
@@ -36,6 +38,7 @@ export function Prose({ body }: { body: string }) {
           </p>
         );
       })}
+      <div className="orn" aria-hidden="true" />
     </div>
   );
 }

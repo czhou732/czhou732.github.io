@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Nav } from "./Nav";
+import { SignalRule } from "./SignalRule";
 import { profile } from "../content/profile";
 
 const BUILD_MONTH = __BUILD_MONTH__;
@@ -27,17 +28,22 @@ export function Section({
   id,
   children,
   first = false,
+  signal,
 }: {
   id?: string;
   children: ReactNode;
   first?: boolean;
+  /** Seed for a signal rule drawn in place of the hairline above this section. */
+  signal?: number;
 }) {
+  const rule = first ? "" : signal !== undefined ? "reveal relative" : "reveal border-t";
   return (
     <section
       id={id}
-      className={`${SHELL} scroll-mt-24 py-[clamp(2.5rem,6vw,4rem)] ${first ? "" : "reveal border-t"}`}
-      style={first ? undefined : { borderColor: "var(--rule-2)" }}
+      className={`${SHELL} scroll-mt-24 py-[clamp(2.5rem,6vw,4rem)] ${rule}`}
+      style={first || signal !== undefined ? undefined : { borderColor: "var(--rule-2)" }}
     >
+      {signal !== undefined && <SignalRule seed={signal} />}
       <div className="flex flex-col gap-[clamp(1.5rem,3.5vw,2.4rem)]">{children}</div>
     </section>
   );
@@ -90,6 +96,7 @@ export function Page({
 }) {
   return (
     <>
+      <div className="laidbg" aria-hidden="true" />
       <a href="#main" className="u-skip">
         Skip to content
       </a>

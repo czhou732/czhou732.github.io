@@ -13,44 +13,35 @@ import {
 } from "../content/cv";
 import { profile } from "../content/profile";
 
-/** The scroll's one committed region: ink field, paper type, once. */
+/** The CV opens like a printed page: a heavy rule, then the person. The portrait
+    is an ink halftone, so it takes the same ink as the type. */
 function Masthead() {
   return (
-    <div style={{ background: "var(--band-bg)", color: "var(--band-fg)" }}>
-      <div className={`${SHELL} py-[clamp(2.5rem,6vw,4rem)]`}>
-        <div className="flex flex-col gap-7 sm:flex-row sm:items-start sm:gap-10">
-          {/* Full colour, no grayscale-until-hover: that trick hides the
-              subject and only pays off for people using a mouse. */}
+    <div className={`${SHELL} pt-[clamp(2.5rem,6vw,4rem)] pb-[clamp(0.5rem,2vw,1rem)]`}>
+      <div
+        className="flex flex-col gap-6 border-t-2 pt-6 sm:flex-row sm:items-center sm:gap-10"
+        style={{ borderColor: "var(--ink)" }}
+      >
+        <div className="duo h-[132px] w-[132px] shrink-0 rounded-[2px] sm:h-[168px] sm:w-[168px]">
           <img
             src="/portrait.webp"
             width={512}
             height={512}
             alt="Portrait of Chengdong (Peter) Zhou"
-            className="w-[132px] shrink-0 rounded-[3px] sm:w-[176px]"
-            style={{ aspectRatio: "1 / 1", objectFit: "cover" }}
           />
-        <div className="flex flex-col gap-5">
-          <h1
-            className="u-display m-0 max-w-[18ch] text-[clamp(1.8rem,3.4vw,2.5rem)]"
-            style={{ color: "var(--band-fg)" }}
-          >
+        </div>
+        <div className="flex flex-col gap-4">
+          <h1 className="u-display m-0 max-w-[18ch] text-[clamp(1.8rem,3.4vw,2.5rem)]">
             {profile.name}
           </h1>
-          <p
-            className="m-0 max-w-[54ch] text-[17px]"
-            style={{ color: "var(--band-fg)", opacity: 0.82 }}
-          >
+          <p className="m-0 max-w-[54ch] text-[18px] leading-[1.55]" style={{ color: "var(--ink-2)" }}>
             Computational psychiatry: reward learning, anhedonia, and multimodal
             biomarkers of psychiatric state (acoustic prosody, MEG, fMRI), with a
             commitment to accessible and inclusive research design.
           </p>
-          <p
-            className="m-0 font-mono text-[10.5px] tracking-[0.08em] uppercase"
-            style={{ color: "var(--band-fg)", opacity: 0.7 }}
-          >
+          <p className="u-label m-0">
             {profile.contact.email} · Los Angeles, CA
           </p>
-        </div>
         </div>
       </div>
     </div>

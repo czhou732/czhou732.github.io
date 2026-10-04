@@ -80,18 +80,19 @@
 
 /* ---------------------------------------------------------------------------
    Tokens.
-   Restrained: neutrals plus one accent, a deep teal. It appears on links, focus
-   rings, footnote markers and the voice series in the plot. Nowhere decorative.
+   Restrained: warm stone paper, blue-black ink, and one accent, the ink blue of
+   a fountain pen. It appears on links, focus rings, footnote markers and the
+   voice series in the plot. Nowhere decorative.
 --------------------------------------------------------------------------- */
 
 @theme {
-  --color-paper: #f6f7f8;
-  --color-paper-2: #edeff1;
-  --color-ink: #141618;
-  --color-ink-2: #43484d;
-  --color-ink-3: #686f76;
-  --color-accent: #0f6460;
-  --color-accent-deep: #0a4a47;
+  --color-paper: #ebe8e1;
+  --color-paper-2: #e0ddd5;
+  --color-ink: #1b1a18;
+  --color-ink-2: #45433e;
+  --color-ink-3: #605d56;
+  --color-accent: #23406b;
+  --color-accent-deep: #172c4d;
 
   --font-sans: "Archivo", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
@@ -101,70 +102,62 @@
 }
 
 :root {
-  --paper: #f6f7f8;
-  --paper-2: #edeff1;
-  --ink: #141618;
-  --ink-2: #43484d;
-  --ink-3: #686f76;
-  --accent: #0f6460;
-  --accent-deep: #0a4a47;
-  --rule: rgb(20 22 24 / 0.14);
-  --rule-2: rgb(20 22 24 / 0.07);
-  --accent-wash: rgb(15 100 96 / 0.14);
-  --band-bg: #141618;
-  --band-fg: #f6f7f8;
+  --paper: #ebe8e1;
+  --paper-2: #e0ddd5;
+  --ink: #1b1a18;
+  --ink-2: #45433e;
+  --ink-3: #605d56;
+  --accent: #23406b;
+  --accent-deep: #172c4d;
+  --rule: rgb(27 26 24 / 0.17);
+  --rule-2: rgb(27 26 24 / 0.09);
+  --accent-wash: rgb(35 64 107 / 0.14);
   color-scheme: light;
 }
 
-/* Designed for dark, not inverted: the ground lifts off pure black and the teal
-   lifts to hold 7:1 against it. */
+/* Designed for dark, not inverted: the ground lifts off pure black, warm like
+   the paper it comes from, and the ink blue lifts to hold 8:1 against it. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #101113;
-    --paper-2: #191b1e;
-    --ink: #e9eaeb;
-    --ink-2: #a8adb2;
-    --ink-3: #797f85;
-    --accent: #4fb3ad;
-    --accent-deep: #86cfca;
-    --rule: rgb(233 234 235 / 0.16);
-    --rule-2: rgb(233 234 235 / 0.08);
-    --accent-wash: rgb(79 179 173 / 0.18);
-    --band-bg: #191b1e;
-    --band-fg: #e9eaeb;
+    --paper: #121110;
+    --paper-2: #1b1a18;
+    --ink: #ebe8e1;
+    --ink-2: #bdb9b0;
+    --ink-3: #928e85;
+    --accent: #8fadda;
+    --accent-deep: #b9cdea;
+    --rule: rgb(235 232 225 / 0.2);
+    --rule-2: rgb(235 232 225 / 0.09);
+    --accent-wash: rgb(143 173 218 / 0.18);
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --paper: #101113;
-  --paper-2: #191b1e;
-  --ink: #e9eaeb;
-  --ink-2: #a8adb2;
-  --ink-3: #797f85;
-  --accent: #4fb3ad;
-  --accent-deep: #86cfca;
-  --rule: rgb(233 234 235 / 0.16);
-  --rule-2: rgb(233 234 235 / 0.08);
-  --accent-wash: rgb(79 179 173 / 0.18);
-  --band-bg: #191b1e;
-  --band-fg: #e9eaeb;
+  --paper: #121110;
+  --paper-2: #1b1a18;
+  --ink: #ebe8e1;
+  --ink-2: #bdb9b0;
+  --ink-3: #928e85;
+  --accent: #8fadda;
+  --accent-deep: #b9cdea;
+  --rule: rgb(235 232 225 / 0.2);
+  --rule-2: rgb(235 232 225 / 0.09);
+  --accent-wash: rgb(143 173 218 / 0.18);
   color-scheme: dark;
 }
 
 :root[data-theme="light"] {
-  --paper: #f6f7f8;
-  --paper-2: #edeff1;
-  --ink: #141618;
-  --ink-2: #43484d;
-  --ink-3: #686f76;
-  --accent: #0f6460;
-  --accent-deep: #0a4a47;
-  --rule: rgb(20 22 24 / 0.14);
-  --rule-2: rgb(20 22 24 / 0.07);
-  --accent-wash: rgb(15 100 96 / 0.14);
-  --band-bg: #141618;
-  --band-fg: #f6f7f8;
+  --paper: #ebe8e1;
+  --paper-2: #e0ddd5;
+  --ink: #1b1a18;
+  --ink-2: #45433e;
+  --ink-3: #605d56;
+  --accent: #23406b;
+  --accent-deep: #172c4d;
+  --rule: rgb(27 26 24 / 0.17);
+  --rule-2: rgb(27 26 24 / 0.09);
+  --accent-wash: rgb(35 64 107 / 0.14);
   color-scheme: light;
 }
 
@@ -423,3 +416,120 @@ sup.fn-mark {
   margin-left: 1px;
   vertical-align: super;
 }
+
+/* ---------------------------------------------------------------------------
+   Laid paper with a watermark. One fixed layer behind the page: fine wire
+   lines, and a faint C·Z in the corner the way a mill marks its stock. The
+   text sits above it, so nothing is ever set on the lines' contrast.
+--------------------------------------------------------------------------- */
+
+:root { --gutter: clamp(1.15rem, 5vw, 4rem); }
+
+.laidbg {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--ink) 3.6%, transparent) 0 1px,
+    transparent 1px 4px
+  );
+}
+.laidbg::after {
+  content: "C\00B7Z";
+  position: absolute;
+  right: 4vw;
+  bottom: 2vh;
+  font: 700 clamp(9rem, 26vw, 22rem) / 0.8 var(--font-sans);
+  font-stretch: 120%;
+  letter-spacing: -0.04em;
+  color: color-mix(in srgb, var(--ink) 2.4%, transparent);
+}
+
+nav[aria-label="Primary"], #main, footer { position: relative; z-index: 2; }
+nav[aria-label="Primary"] { z-index: 50; }
+
+/* Light ink on dark ground carries more weight, so the lines step down. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .laidbg {
+    background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--ink) 2.1%, transparent) 0 1px, transparent 1px 4px);
+  }
+  :root:not([data-theme="light"]) .laidbg::after { color: color-mix(in srgb, var(--ink) 1.8%, transparent); }
+}
+:root[data-theme="dark"] .laidbg {
+  background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--ink) 2.1%, transparent) 0 1px, transparent 1px 4px);
+}
+:root[data-theme="dark"] .laidbg::after { color: color-mix(in srgb, var(--ink) 1.8%, transparent); }
+
+@media print { .laidbg { display: none; } }
+
+/* ---------------------------------------------------------------------------
+   Figure 1 as an instrument readout: millimetre paper behind the plot.
+--------------------------------------------------------------------------- */
+
+.bm-grid {
+  padding: 18px 14px 6px;
+  border: 1px solid var(--rule);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--accent) 20%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 20%, transparent) 1px, transparent 1px),
+    linear-gradient(color-mix(in srgb, var(--accent) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 8%, transparent) 1px, transparent 1px);
+  background-size: 60px 60px, 60px 60px, 12px 12px, 12px 12px;
+}
+
+/* ---------------------------------------------------------------------------
+   Signal rule: a thin trace in place of a hairline between sections. Complete
+   at rest; where the browser can link motion to scroll it draws in as it
+   enters.
+--------------------------------------------------------------------------- */
+
+.sig { position: absolute; left: var(--gutter); right: var(--gutter); top: 0; height: 30px; transform: translateY(-50%); pointer-events: none; }
+.sig svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.sig path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.75;
+  stroke-dasharray: 4000;
+  stroke-dashoffset: 0;
+}
+@keyframes sigdraw { from { stroke-dashoffset: 4000; } to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .sig path {
+      animation: sigdraw linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 90%;
+    }
+  }
+}
+
+/* Portrait: ink halftone. A true duotone of photograph and paper, then a dot
+   screen. Dark mode screens instead of multiplying so the face stays bright. */
+.duo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--paper);
+  --duo-blend: multiply;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .duo { --duo-blend: screen; } }
+:root[data-theme="dark"] .duo { --duo-blend: screen; }
+.duo img { display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.18) brightness(1.04); mix-blend-mode: var(--duo-blend); }
+.duo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at center, var(--paper) 0 34%, transparent 36%);
+  background-size: 4px 4px;
+  mix-blend-mode: screen;
+  opacity: 0.28;
+}
+
+/* Section marks and the end-of-text ornament in essays. */
+.sect-mark { font-family: var(--font-serif); font-weight: 600; color: var(--accent); margin-right: 0.55rem; }
+.orn { display: flex; justify-content: center; margin: 1.6rem 0 0.4rem; color: var(--accent); }
+.orn::before { content: ""; width: 9px; height: 9px; transform: rotate(45deg); border: 1px solid currentColor; }
