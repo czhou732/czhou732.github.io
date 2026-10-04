@@ -20,7 +20,7 @@ export const profile = {
    * Public narrative approved: father's blindness, first-gen / SGV.
    */
   throughline:
-    "My father has been legally blind from retinal atrophy since childhood, and his vision keeps getting worse. He cannot fill out a visual analog scale, which is how most of psychiatry still measures how a person feels. I build instruments that do not require the patient to be a reliable narrator of their own symptoms.",
+    "My father is legally blind from retinal\u00a0atrophy and cannot fill out a visual analog scale, which is how most of psychiatry still measures how a person feels, so I build instruments that do not require the patient to be a reliable narrator of their own symptoms.",
 
   contact: {
     email: "czhou732@usc.edu",

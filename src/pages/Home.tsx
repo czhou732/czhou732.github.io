@@ -152,7 +152,12 @@ export function Home() {
           }
         >
           <SectionHead>Three labs, one question, three angles on it.</SectionHead>
-          <p className="u-lead m-0 max-w-[60ch]">{profile.throughline}</p>
+          <p
+            className="m-0 max-w-[40ch] text-[clamp(1.2rem,2.4vw,1.45rem)] leading-[1.45] font-semibold"
+            style={{ color: "var(--ink)" }}
+          >
+            {profile.throughline}
+          </p>
 
           <dl className="m-0 mt-2 flex flex-col">
             {threads.map((t) => (
