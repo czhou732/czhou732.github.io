@@ -78,3 +78,7 @@ export const caveats = [
   "Independent cohorts and different anhedonia instruments (PHQ-8 items 1–2 vs Chapman), so this is a benchmark across datasets, not a within-subject comparison.",
   "Both streams overfit heavily (train AUC 1.0, gap > 0.35) on 447 features and 32 positive cases. Stream B is also pipeline-dependent: fMRIPrep 23.x gives 0.45, below chance.",
 ];
+
+/** The two caveats a skimmer must see; the rest sit behind the disclosure. */
+export const keyCaveats = caveats.slice(0, 2);
+export const methodCaveats = caveats.slice(2);

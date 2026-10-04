@@ -1,5 +1,6 @@
 import { Page, Section, SectionHead } from "../components/Page";
-import { Benchmark } from "../components/Benchmark";
+import { Cite } from "../components/Cite";
+import { ResultsTable } from "../components/ResultsTable";
 import { Praxis } from "../components/Praxis";
 import { publications, research, software } from "../content/cv";
 import { threads } from "../content/profile";
@@ -19,16 +20,17 @@ export function Research() {
             Reward learning, and whether you can measure it from outside the skull.
           </h1>
           <p className="u-measure m-0">
-            Three positions, one question. Below: the benchmark that motivates all
-            of it, then the projects, then everything written or presented.
+            Three positions, one question. The benchmark figure is on the{" "}
+            <a href="/#benchmark">home page</a>; Table 1 gives its numbers. Then the
+            projects, then everything written or presented.
           </p>
         </div>
-        <Benchmark />
+        <ResultsTable />
+        <Cite />
       </Section>
 
       {threads.map((t) => {
-        const entry = research.find((r) => r.org.includes(t.lab.split(" · ")[0])) ??
-          research.find((r) => t.lab.startsWith(r.org.split(" ")[0]));
+        const entry = research.find((r) => r.thread === t.key);
         return (
           <Section key={t.key} id={t.key}>
             <div className="grid gap-x-8 gap-y-4 sm:grid-cols-[9rem_1fr]">

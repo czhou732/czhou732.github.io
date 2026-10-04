@@ -1,6 +1,6 @@
 import { Page, Section, SectionHead } from "../components/Page";
 import { Benchmark } from "../components/Benchmark";
-import { Praxis } from "../components/Praxis";
+import { PraxisStrip } from "../components/Praxis";
 import { profile, threads } from "../content/profile";
 import { essays } from "../content/essays";
 import { syllabus } from "../content/praxis";
@@ -16,13 +16,6 @@ export function Home() {
       cta: "ClinicalWhisper on GitHub",
     },
     {
-      kicker: publications[0].year,
-      title: publications[0].title,
-      line: "The two-stream benchmark above, written up: acoustic prosody against ventral striatal BOLD, preregistered and reported with its null.",
-      href: publications[0].href!,
-      cta: "Read the preprint",
-    },
-    {
       kicker: syllabus.dates,
       title: syllabus.title,
       line: syllabus.line,
@@ -34,7 +27,7 @@ export function Home() {
   return (
     <Page current="/">
       {/* The question. Name small, question large. */}
-      <Section first>
+      <Section first id="benchmark">
         <div className="flex flex-col gap-4">
           {/* Sized so the question holds two lines from 1024px up.
               42px is the measured 3-line threshold at full container width. */}
@@ -89,11 +82,6 @@ export function Home() {
         <Benchmark />
       </Section>
 
-      {/* The group, given its own object because it has its own address. */}
-      <Section id="praxis">
-        <Praxis />
-      </Section>
-
       {/* Three angles on one question. */}
       <Section id="threads">
         <div className="flex flex-col gap-5">
@@ -122,7 +110,7 @@ export function Home() {
                 {/* Unique link text: three links reading "Detail" are
                     meaningless to anyone listing links out of context. */}
                 <a href={t.href} className="font-mono text-[10.5px] tracking-[0.08em] uppercase">
-                  {t.title} detail
+                  Read the {t.title.toLowerCase()} work
                 </a>
               </dd>
             </div>
@@ -155,6 +143,11 @@ export function Home() {
             </li>
           ))}
         </ol>
+      </Section>
+
+      {/* The group, as a strip: the full panel is on Research. */}
+      <Section id="praxis">
+        <PraxisStrip />
       </Section>
 
       {/* Writing, led by real sentences rather than summaries. */}

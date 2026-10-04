@@ -14,6 +14,8 @@ export type Entry = {
   where?: string;
   dates: string;
   meta?: string;
+  /** Which home-page thread this entry belongs under on Research. */
+  thread?: "model" | "signal" | "circuit";
   points: string[];
 };
 
@@ -81,6 +83,7 @@ export const research: Entry[] = [
   {
     role: "NIH Summer Intern",
     org: "NIMH Experimental Therapeutics & Pathophysiology Branch",
+    thread: "circuit",
     where: "National Institutes of Health, Bethesda, MD",
     dates: "May 2026 – Aug 2026",
     meta: "Mentors: Dr. Mark Kvarta & Dr. Samika Kumar · Branch Chief: Dr. Carlos Zarate",
@@ -92,6 +95,7 @@ export const research: Entry[] = [
   {
     role: "Undergraduate Research Assistant",
     org: "iLab, Visual & Computational Neuroscience",
+    thread: "signal",
     where: "USC Viterbi School of Engineering",
     dates: "Oct 2025 – present",
     meta: "PI: Dr. Laurent Itti · Paid, part-time, NIH-funded",
@@ -105,6 +109,7 @@ export const research: Entry[] = [
   {
     role: "Directed Research Fellow",
     org: "Depression, Neurobiology, and Social Cognition Lab",
+    thread: "model",
     where: "USC Department of Psychology",
     dates: "Oct 2025 – present",
     meta: "PI: Dr. Stephen Read · PSYC 490X",

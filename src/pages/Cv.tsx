@@ -4,6 +4,7 @@ import {
   education,
   interests,
   honors,
+  publications,
   research,
   service,
   skills,
@@ -167,9 +168,31 @@ export function Cv() {
         </div>
         <p className="m-0">
           <a href="/research/" className="font-mono text-[10.5px] tracking-[0.08em] uppercase">
-            Publications and software
+            Table 1, software and project detail
           </a>
         </p>
+      </Section>
+
+      <Section id="publications">
+        <SectionHead>Manuscripts and presentations</SectionHead>
+        {/* Reference-list form: hanging indent, authors first, DOI last. */}
+        <ol className="m-0 flex list-none flex-col gap-4 p-0">
+          {publications.map((p) => (
+            <li
+              key={p.title + p.year}
+              className="max-w-[68ch] pl-[1.75rem] text-[15.5px] leading-relaxed [text-indent:-1.75rem]"
+            >
+              <span style={{ color: "var(--ink)" }}>{p.authors}</span> ({p.year}).{" "}
+              <span style={{ color: "var(--ink)" }}>{p.title}.</span> {p.venue}.
+              {p.doi && (
+                <>
+                  {" "}
+                  <a href={p.href}>https://doi.org/{p.doi}</a>
+                </>
+              )}
+            </li>
+          ))}
+        </ol>
       </Section>
 
       <Section>

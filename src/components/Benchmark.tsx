@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { benchmark, caveats, permutations } from "../content/findings";
+import { benchmark, keyCaveats, methodCaveats, permutations } from "../content/findings";
 
 /**
  * The authored asset under the question, and the site's only motion.
@@ -250,23 +250,51 @@ export function Benchmark() {
         about how modest both are.
       </p>
 
+      {/* Promoted out of the 11px caption: this is what stops the headline
+          number being read as stronger than the paper supports. */}
+      <aside
+        aria-label="Read before citing"
+        className="flex max-w-[66ch] flex-col gap-2 border-t pt-4"
+        style={{ borderColor: "var(--rule)" }}
+      >
+        <span className="u-label" style={{ color: "var(--ink-2)" }}>
+          Read before citing
+        </span>
+        {keyCaveats.map((c) => (
+          <p key={c} className="m-0 text-[15px] leading-relaxed" style={{ color: "var(--ink)" }}>
+            {c}
+          </p>
+        ))}
+      </aside>
+
       <figcaption
         className="m-0 max-w-[76ch] font-mono text-[11px] leading-relaxed"
         style={{ color: "var(--ink-3)" }}
       >
-        Fig. — AUC-ROC with 95% bootstrap CI, stratified 5-fold CV. Primary
-        preregistered analysis.{" "}
-        {benchmark.streams
-          .map(
-            (st) =>
-              `${st.caption}: ${st.detail}, n=${st.n}${
-                st.screened ? ` of ${st.screened} screened` : ""
-              }`,
-          )
-          .join(". ")}
-        . {caveats.join(" ")} Preregistered at{" "}
+        <b style={{ color: "var(--ink-2)", fontWeight: 600 }}>Fig. 1</b> AUC-ROC with 95%
+        bootstrap CI, stratified 5-fold CV. Primary preregistered analysis,{" "}
         <a href="https://osf.io/bsvrj">osf.io/bsvrj</a>.
       </figcaption>
+
+      <details className="bm-details max-w-[76ch]">
+        <summary className="u-label cursor-pointer" style={{ color: "var(--ink-2)" }}>
+          Datasets, methods and remaining caveat
+        </summary>
+        <p
+          className="m-0 mt-3 font-mono text-[11px] leading-relaxed"
+          style={{ color: "var(--ink-3)" }}
+        >
+          {benchmark.streams
+            .map(
+              (st) =>
+                `${st.caption}: ${st.detail}, n=${st.n}${
+                  st.screened ? ` of ${st.screened} screened` : ""
+                }`,
+            )
+            .join(". ")}
+          . {methodCaveats.join(" ")}
+        </p>
+      </details>
     </figure>
   );
 }
