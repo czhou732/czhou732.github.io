@@ -2,9 +2,9 @@
  * The preregistered two-stream benchmark (osf.io/bsvrj).
  *
  * SOURCE OF TRUTH: the manuscript itself —
- *   ~/Research/Labs/NSG/Dopaminergic_Voice/main.tex
- *   Stream A primary: Table 1 (tab:stream_a_results), lines 205–215
- *   Stream B:         Results §, line 315
+ *   ~/Research/Labs/NSG/Dopaminergic_Voice/overleaf_audit/main.tex
+ *   Stream A primary: Table 1 (tab:stream_a_results)
+ *   Stream B:         Results § (n = 234 after exclusions from 272 screened)
  *   Stream B CIs:     Stream_B/classification_results.json (pre-fMRIPrep run)
  *
  * These are the PRIMARY preregistered numbers: participant speech only, after
@@ -27,6 +27,8 @@ export type Stream = {
   caption: string;
   detail: string;
   n: number;
+  /** Participants before exclusions, when different from n. */
+  screened?: number;
   estimates: Estimate[];
 };
 
@@ -51,6 +53,7 @@ export const benchmark: { streams: Stream[]; chance: number } = {
       caption: "fMRI",
       detail: "Nucleus accumbens BOLD, BART · ds000030",
       n: 234,
+      screened: 272,
       estimates: [
         { model: "Logistic regression", auc: 0.58, lo: 0.509, hi: 0.655 },
         { model: "Random forest", auc: 0.523, lo: 0.451, hi: 0.599 },
@@ -75,3 +78,7 @@ export const caveats = [
   "Independent cohorts and different anhedonia instruments (PHQ-8 items 1–2 vs Chapman), so this is a benchmark across datasets, not a within-subject comparison.",
   "Both streams overfit heavily (train AUC 1.0, gap > 0.35) on 447 features and 32 positive cases. Stream B is also pipeline-dependent: fMRIPrep 23.x gives 0.45, below chance.",
 ];
+
+/** The two caveats a skimmer must see; the rest sit behind the disclosure. */
+export const keyCaveats = caveats.slice(0, 2);
+export const methodCaveats = caveats.slice(2);

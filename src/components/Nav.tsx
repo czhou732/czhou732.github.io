@@ -32,7 +32,8 @@ export function Nav({ current = "/" }: { current?: string }) {
       <div className="mx-auto flex max-w-[74rem] items-center justify-between gap-6 px-[clamp(1.15rem,5vw,4rem)] py-3.5">
         <a
           href="/"
-          className="font-mono text-[11px] font-medium tracking-[0.22em] uppercase no-underline"
+          aria-label="Home"
+          className="-my-3 py-3 pr-3 font-mono text-[11px] font-medium tracking-[0.22em] uppercase no-underline"
           style={{ color: "var(--ink)" }}
         >
           {profile.initials}
@@ -48,7 +49,7 @@ export function Nav({ current = "/" }: { current?: string }) {
                 key={r.href}
                 href={r.href}
                 aria-current={active ? "page" : undefined}
-                className={`border-b pb-0.5 font-mono text-[11px] tracking-[0.05em] no-underline ${
+                className={`-mx-1.5 -my-3 border-b px-1.5 pt-3 pb-3 font-mono text-[11px] tracking-[0.05em] no-underline transition-colors duration-200 hover:text-[color:var(--ink)] ${
                   r.narrow ? "" : "hidden sm:inline"
                 }`}
                 style={{
@@ -69,7 +70,7 @@ export function Nav({ current = "/" }: { current?: string }) {
 
           <a
             href={praxis.href}
-            className="flex items-center gap-1 border-b pb-0.5 font-mono text-[11px] font-medium tracking-[0.05em] no-underline"
+            className="-mx-1.5 -my-3 flex items-center gap-1 border-b px-1.5 pt-3 pb-3 font-mono text-[11px] font-medium tracking-[0.05em] no-underline"
             style={{ color: "var(--brass)", borderColor: "transparent" }}
           >
             {praxis.name}

@@ -37,7 +37,7 @@ function Outbound() {
 export function Praxis() {
   return (
     <article
-      className="flex flex-col gap-7 rounded-[2px] border border-t-2 p-[clamp(1.35rem,3.6vw,2.35rem)]"
+      className="flex flex-col gap-7 border border-t-2 p-[clamp(1.35rem,3.6vw,2.35rem)]"
       style={{
         background: "var(--paper-2)",
         borderColor: "var(--rule-2)",
@@ -108,5 +108,38 @@ export function Praxis() {
         </a>
       </div>
     </article>
+  );
+}
+
+/**
+ * The compact form for the home page. The full panel lives on Research; here
+ * PRAXIS is evidence of initiative, so it gets a paragraph and two links
+ * rather than a second object competing with the research threads.
+ */
+export function PraxisStrip() {
+  return (
+    <div
+      className="flex flex-col gap-3 border-t pt-5 sm:grid sm:grid-cols-[9rem_1fr] sm:gap-x-8"
+      style={{ borderColor: "var(--brass)" }}
+    >
+      <span className="u-label" style={{ color: "var(--brass)" }}>
+        {praxis.name}
+      </span>
+      <div className="flex flex-col items-start gap-2.5">
+        <p className="m-0 max-w-[62ch] text-[15.5px]">
+          {praxis.full}. I founded the group in February 2026 and lead it: original
+          studies, preregistered, with null results published. Faculty sponsor,{" "}
+          {praxis.facts.find((f) => f.label === "Sponsor")?.value}.
+        </p>
+        <div className="flex flex-wrap gap-x-6 gap-y-1">
+          <a href="/research/#praxis" className="u-hit font-mono text-[10.5px] tracking-[0.08em] uppercase">
+            What the group runs
+          </a>
+          <a href={praxis.href} className="u-hit font-mono text-[10.5px] tracking-[0.08em] uppercase">
+            {praxis.display}
+          </a>
+        </div>
+      </div>
+    </div>
   );
 }

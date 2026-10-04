@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 import { Nav } from "./Nav";
 import { profile } from "../content/profile";
 
+const BUILD_MONTH = __BUILD_MONTH__;
+
 export const SHELL = "mx-auto max-w-[74rem] px-[clamp(1.15rem,5vw,4rem)]";
 
 /** Section heading. No eyebrow above it: the heading is the label. */
@@ -33,7 +35,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`${SHELL} scroll-mt-24 py-[clamp(2.5rem,6vw,4rem)] ${first ? "" : "border-t"}`}
+      className={`${SHELL} scroll-mt-24 py-[clamp(2.5rem,6vw,4rem)] ${first ? "" : "reveal border-t"}`}
       style={first ? undefined : { borderColor: "var(--rule-2)" }}
     >
       <div className="flex flex-col gap-[clamp(1.5rem,3.5vw,2.4rem)]">{children}</div>
@@ -47,7 +49,7 @@ function Footer() {
     { label: "Email", href: `mailto:${c.email}`, text: c.email },
     { label: "GitHub", href: c.github, text: "github.com/czhou732" },
     { label: "LinkedIn", href: c.linkedin, text: "linkedin.com/in/chengdong-zhou" },
-    { label: "OSF", href: c.osf, text: "osf.io/4d6ey" },
+    { label: "OSF", href: c.osf, text: "osf.io/bsvrj" },
   ];
 
   return (
@@ -72,7 +74,7 @@ function Footer() {
         </dl>
 
         <p className="u-label m-0 max-w-[52ch] leading-relaxed normal-case">
-          {profile.name} · Los Angeles · Last updated August 2026
+          {profile.name} · Los Angeles · Updated {BUILD_MONTH}
         </p>
       </div>
     </footer>

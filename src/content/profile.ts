@@ -27,7 +27,7 @@ export const profile = {
     emailAlt: "czpeterzhou@gmail.com",
     github: "https://github.com/czhou732",
     linkedin: "https://linkedin.com/in/chengdong-zhou",
-    osf: "https://osf.io/4d6ey",
+    osf: "https://osf.io/bsvrj",
   },
 } as const;
 
@@ -61,7 +61,7 @@ export const threads: Thread[] = [
     key: "circuit",
     title: "Circuit",
     lab: "NIMH · Experimental Therapeutics",
-    line: "What the circuit is doing while it happens. MEG source localization, gamma-band power, and signal complexity in the insula as a marker of suicidal ideation.",
+    line: "What the circuit is doing while it happens. MEG source localization and Lempel-Ziv signal complexity in the insula, explored as a correlate of suicidal thoughts.",
     href: "/research/#circuit",
   },
 ];

@@ -2,7 +2,9 @@ import { Page, Section, SectionHead, SHELL } from "../components/Page";
 import {
   certifications,
   education,
+  interests,
   honors,
+  publications,
   research,
   service,
   skills,
@@ -14,7 +16,7 @@ import { profile } from "../content/profile";
 /** The scroll's one committed region: ink field, paper type, once. */
 function Masthead() {
   return (
-    <div style={{ background: "var(--ink)", color: "var(--paper)" }}>
+    <div style={{ background: "var(--band-bg)", color: "var(--band-fg)" }}>
       <div className={`${SHELL} py-[clamp(2.5rem,6vw,4rem)]`}>
         <div className="flex flex-col gap-7 sm:flex-row sm:items-start sm:gap-10">
           {/* Full colour, no grayscale-until-hover: that trick hides the
@@ -30,13 +32,13 @@ function Masthead() {
         <div className="flex flex-col gap-5">
           <h1
             className="u-display m-0 max-w-[18ch] text-[clamp(1.8rem,3.4vw,2.5rem)]"
-            style={{ color: "var(--paper)" }}
+            style={{ color: "var(--band-fg)" }}
           >
             {profile.name}
           </h1>
           <p
             className="m-0 max-w-[54ch] text-[17px]"
-            style={{ color: "var(--paper)", opacity: 0.82 }}
+            style={{ color: "var(--band-fg)", opacity: 0.82 }}
           >
             Computational psychiatry. Reward learning, anhedonia, and multimodal
             biomarkers of psychiatric state — acoustic prosody, MEG, fMRI — plus
@@ -44,7 +46,7 @@ function Masthead() {
           </p>
           <p
             className="m-0 font-mono text-[10.5px] tracking-[0.08em] uppercase"
-            style={{ color: "var(--paper)", opacity: 0.7 }}
+            style={{ color: "var(--band-fg)", opacity: 0.7 }}
           >
             {profile.contact.email} · Los Angeles, CA
           </p>
@@ -118,10 +120,23 @@ export function Cv() {
                   {ed.degree}
                 </p>
                 <p className="u-label m-0 normal-case">{ed.points.join(" · ")}</p>
+                {ed.coursework && (
+                  <p className="m-0 max-w-[64ch] text-[15px]">
+                    <span className="u-label">Coursework </span>
+                    {ed.coursework}
+                  </p>
+                )}
               </div>
             </div>
           ))}
         </div>
+      </Section>
+
+      <Section>
+        <SectionHead>Research interests</SectionHead>
+        <p className="u-measure m-0 text-[16.5px]" style={{ color: "var(--ink)" }}>
+          {interests}
+        </p>
       </Section>
 
       <Section>
@@ -152,10 +167,32 @@ export function Cv() {
           ))}
         </div>
         <p className="m-0">
-          <a href="/research/" className="font-mono text-[10.5px] tracking-[0.08em] uppercase">
-            Publications and software
+          <a href="/research/" className="u-hit font-mono text-[10.5px] tracking-[0.08em] uppercase">
+            Table 1, software and project detail
           </a>
         </p>
+      </Section>
+
+      <Section id="publications">
+        <SectionHead>Manuscripts and presentations</SectionHead>
+        {/* Reference-list form: hanging indent, authors first, DOI last. */}
+        <ol className="m-0 flex list-none flex-col gap-4 p-0">
+          {publications.map((p) => (
+            <li
+              key={p.title + p.year}
+              className="max-w-[68ch] pl-[1.75rem] text-[15.5px] leading-relaxed [text-indent:-1.75rem]"
+            >
+              <span style={{ color: "var(--ink)" }}>{p.authors}</span> ({p.year}).{" "}
+              <span style={{ color: "var(--ink)" }}>{p.title}.</span> {p.venue}.
+              {p.doi && (
+                <>
+                  {" "}
+                  <a href={p.href}>https://doi.org/{p.doi}</a>
+                </>
+              )}
+            </li>
+          ))}
+        </ol>
       </Section>
 
       <Section>
