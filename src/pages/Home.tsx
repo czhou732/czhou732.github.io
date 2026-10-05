@@ -273,8 +273,7 @@ export function Home() {
                 Permutation <i>p</i> = {permutations.voice.p} for voice (
                 {permutations.voice.model.toLowerCase()}) and {permutations.bold.p} for fMRI (
                 {permutations.bold.model.toLowerCase()}), both uncorrected. The 95% intervals
-                overlap and the two are statistically non-inferior to each other, which is a
-                statement about how modest both are.
+                overlap: both results are modest, and neither dominates the other.
               </>,
             ]}
           />
