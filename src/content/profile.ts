@@ -48,7 +48,7 @@ export const threads: Thread[] = [
     key: "model",
     title: "Model",
     lab: "Read Lab · USC",
-    line: "A Rescorla-Wagner simulation of how reward learning collapses when the dopaminergic learning rate falls and effort stops being worth spending.",
+    line: "A Rescorla-Wagner simulation of how anhedonia breaks reward learning: choices that stop following learned value cost far more than slower learning.",
     href: "/research/#model",
   },
   {

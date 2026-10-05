@@ -76,7 +76,7 @@ export const research: Entry[] = [
     points: [
       "Founded and lead an undergraduate computational neuroscience research group investigating acoustic biomarkers of depression through the dopaminergic reward system.",
       "Preregistered the study on the Open Science Framework (osf.io/bsvrj) and coordinated a multi-stream analysis pipeline spanning acoustic analysis, self-report, and fMRI.",
-      "Public launch in Fall 2026 with three officers, a speaker series with researchers from USC, NIMH, Stanford, Yale, and Emory, and a biweekly journal club.",
+      "Public launch in Fall 2026 with three officers and five research members, a speaker series with researchers from USC, NIMH, Stanford, Yale, and Emory, and a biweekly journal club.",
       "Developed ClinicalWhisper, an open-source, on-device clinical speech analysis pipeline used across the group’s research streams.",
     ],
   },
@@ -101,9 +101,9 @@ export const research: Entry[] = [
     meta: "PI: Dr. Laurent Itti · Paid, part-time, NIH-funded",
     points: [
       "Designed and deployed a fully accessible survey pipeline using Qualtrics logic flows and custom scripting, ensuring WCAG compliance and collecting 493 responses from blind and visually impaired adults (291 retained after a two-stage quality-control filter).",
-      "First author of a review paper in preparation on vision-based assistive technology, informed by the survey, with collaborators at Penn State University.",
+      "First author of a review paper in preparation on vision-based assistive technology, informed by the survey, with collaborators now at Georgia Tech.",
       "Led a pre-registered benchmark of acoustic prosody versus ventral-striatal fMRI for anhedonia classification, resulting in a first-author bioRxiv preprint (2026).",
-      "Coordinate and moderate IRB-approved Zoom focus groups with blind and visually impaired adults (pilot May 2026; monthly tier-based sessions in Fall 2026). Findings will inform live prototype testing of the AI assistive device.",
+      "Coordinate and moderate IRB-approved Zoom focus groups with blind and visually impaired adults (pilot May 2026; weekly tier-based sessions in Fall 2026). Findings will inform live prototype testing of the AI assistive device.",
     ],
   },
   {
@@ -114,8 +114,8 @@ export const research: Entry[] = [
     dates: "Oct 2025 – present",
     meta: "PI: Dr. Stephen Read · PSYC 490X",
     points: [
-      "Built a Rescorla-Wagner reinforcement learning simulation with self-derived parameters (α as dopaminergic learning rate, β as volitional effort in the inverse temperature), modelling how reward learning collapses under anhedonia.",
-      "Developed a formal parameter framework mapping circuit-level variables (LHb-VTA pathway) to RL parameters and their behavioural predictions, and simulated circuit-level treatment effects (ketamine, pramipexole, rTMS).",
+      "Built a Rescorla-Wagner reinforcement learning simulation with self-derived parameters (α as dopaminergic learning rate; β as inverse temperature, how strongly learned values drive choice), modelling how reward learning collapses under anhedonia.",
+      "Developed a formal parameter framework mapping circuit-level variables (LHb-VTA pathway) to RL parameters and their behavioural predictions, and simulated circuit-level treatment effects (ketamine, pramipexole, rTMS, psilocybin).",
       "Synthesised literature on the LHb-VTA pathway and mTOR signalling to support hypothesis generation for studies on rapid-acting antidepressants such as ketamine.",
     ],
   },
@@ -215,7 +215,7 @@ export const software = [
     line: "Local-first pipeline for sensitive clinical interview audio: joint transcription and diarization, OpenSMILE eGeMAPSv02 acoustic features, and local LLM scoring that is documented as not yet clinically validated.",
     points: [
       "Designed for fully on-device processing, so audio, transcripts, and results never leave the machine, supporting IRB data-privacy requirements.",
-      "Open-sourced on GitHub (Zenodo DOI 10.5281/zenodo.20559786). Used across the PRAXIS research streams and installed by researchers in the Rutledge Lab at Yale for evaluation on long clinical interviews.",
+      "Open-sourced on GitHub (Zenodo DOI 10.5281/zenodo.20559786). Used across the PRAXIS research streams and being trialled by a Yale lab on long clinical interviews.",
     ],
   },
 ];
