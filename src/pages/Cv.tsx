@@ -1,6 +1,5 @@
 import { Page, Section, SectionHead, SHELL } from "../components/Page";
 import {
-  certifications,
   education,
   interests,
   honors,
@@ -222,20 +221,6 @@ export function Cv() {
         </div>
       </Section>
 
-      <Section>
-        <SectionHead>Training and certifications</SectionHead>
-        <ul className="m-0 flex list-none flex-col p-0">
-          {certifications.map((c) => (
-            <li
-              key={c}
-              className="max-w-[62ch] border-t py-3.5 text-[15.5px] first:border-t-0 first:pt-0"
-              style={{ borderColor: "var(--rule-2)" }}
-            >
-              {c}
-            </li>
-          ))}
-        </ul>
-      </Section>
     </Page>
   );
 }

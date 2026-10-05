@@ -52,7 +52,7 @@ export const education: Education[] = [
 
 /** Verbatim from the CV's Research Interests line. */
 export const interests =
-  "Computational psychiatry; reward learning, anhedonia, and dopaminergic dysfunction; reinforcement-learning models of mood and motivation; multimodal biomarkers of psychiatric states (acoustic prosody, MEG/fMRI); neural oscillations and translational mechanisms of rapid-acting antidepressants; accessible and inclusive research design.";
+  "Computational psychiatry; reward learning and anhedonia; scalable voice and digital biomarkers of mood and emotion.";
 
 export const honors = [
   { year: "2026–27", name: "NIH Undergraduate Scholarship Program (UGSP) Scholar" },
@@ -240,7 +240,7 @@ export const skills = [
   { group: "LLMs & HPC", items: "Local LLM inference (Ollama, MLX); NIH Biowulf, Slurm" },
   {
     group: "Statistics & tools",
-    items: "SPSS (GLM, ANOVA, regression), Qualtrics (scaled deployment), OSF (pre-registration), iSTAR (IRB)",
+    items: "SPSS (GLM, ANOVA, regression), Qualtrics (scaled deployment), OSF (pre-registration), iSTAR (IRB); CITI certified in human subjects research and Responsible Conduct of Research",
   },
   { group: "Languages", items: "English (native/fluent), Mandarin (native), Spanish (intermediate)" },
 ];
@@ -280,9 +280,3 @@ export const service: Entry[] = [
   },
 ];
 
-export const certifications = [
-  "Responsible Conduct of Research, University of Southern California (CITI Program)",
-  "Social-Behavioral Human Subjects Research, University of Southern California (CITI Program)",
-  "Nonviolent Crisis Intervention (Blue Card), Crisis Prevention Institute",
-  "Certified Personal Trainer (NASM-CPT), National Academy of Sports Medicine",
-];
