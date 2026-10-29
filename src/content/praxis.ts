@@ -24,7 +24,7 @@ export const praxis = {
     { label: "Founded", value: "Feb 2026" },
     { label: "Host", value: "USC Dornsife" },
     { label: "Sponsor", value: "Dr. Laurent Itti" },
-    { label: "My role", value: "Founder, project lead" },
+    { label: "My role", value: "Founder, director" },
   ],
 
   /** What the group actually runs. Each line is a thing with a schedule. */
