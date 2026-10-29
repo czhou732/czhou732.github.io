@@ -68,7 +68,7 @@ export const honors = [
 
 export const research: Entry[] = [
   {
-    role: "Founder & Project Lead",
+    role: "Founder & Director",
     org: "PRAXIS",
     where: "University of Southern California",
     dates: "Feb 2026 – present",
