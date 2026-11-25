@@ -10,19 +10,18 @@
 export const praxis = {
   name: "PRAXIS",
   full: "Psychiatry Research, Analytics & eXperimental Innovation Society",
-  tagline: "From theory into tools that reach patients.",
 
   href: "https://uscpraxis.org",
   display: "uscpraxis.org",
 
-  /** Two sentences, his own framing: built to publish, not to practise. */
+  /** Plain facts only (Peter, 2026-11-25: no taglines or AI-style framing). */
   line:
-    "An undergraduate research group at USC working where machine learning meets clinical mental health. I founded it in February 2026 and lead it: we run original studies, preregister them, and publish what we find including the results that come back null.",
+    "An undergraduate computational psychiatry research group at USC. I founded it in February 2026 and direct it.",
 
   /** Short values only. This block reads as an instrument panel, not prose. */
   facts: [
     { label: "Founded", value: "Feb 2026" },
-    { label: "Host", value: "USC Dornsife" },
+    { label: "Registration", value: "Planned, Spring 2027" },
     { label: "Sponsor", value: "Dr. Laurent Itti" },
     { label: "My role", value: "Founder, director" },
   ],
@@ -30,9 +29,9 @@ export const praxis = {
   /** What the group actually runs. Each line is a thing with a schedule. */
   does: [
     "Original research applying machine learning to clinical populations, preregistered on OSF before the data are touched.",
-    "A twenty-paper journal-club curriculum taking undergraduates from the founding papers of the field through to algorithmic bias.",
-    "A biweekly speaker series, including researchers from the NIMH.",
-    "Open-source code and computational psychiatry resources, so the methods can be checked by anyone who wants to check them.",
+    "A biweekly journal club on a curated twenty-paper syllabus, from the founding papers of the field through to algorithmic bias.",
+    "A speaker series with researchers from USC, NIMH, Stanford, Yale, and Emory.",
+    "Open-source code and teaching materials, published on GitHub and Zenodo.",
   ],
 } as const;
 
@@ -57,5 +56,5 @@ export const syllabus = {
   doiHref: "https://doi.org/10.5281/zenodo.20559875",
   license: "CC BY 4.0",
 
-  line: "The curriculum PRAXIS runs, written to take an undergraduate from the founding papers of the field through reinforcement learning, Bayesian models of psychosis, and biomarker methodology to algorithmic bias in clinical prediction. Every reading is linked to its publisher record, English and Simplified Chinese, citable by DOI.",
+  line: "The curriculum PRAXIS runs, curated to take an undergraduate from the founding papers of the field through reinforcement learning, Bayesian models of psychosis, and biomarker methodology to algorithmic bias in clinical prediction. Every reading is linked to its publisher record, English and Simplified Chinese, citable by DOI.",
 } as const;

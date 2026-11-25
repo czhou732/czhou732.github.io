@@ -28,7 +28,7 @@ export const profile = {
     emailAlt: "czpeterzhou@gmail.com",
     github: "https://github.com/czhou732",
     linkedin: "https://linkedin.com/in/chengdong-zhou",
-    osf: "https://osf.io/bsvrj",
+    osf: "https://osf.io/4d6ey",
   },
 } as const;
 
@@ -41,28 +41,28 @@ export type Thread = {
 };
 
 /**
- * Three angles on one question. His own framing: not spread thin, triangulating.
+ * The three research threads. Lines are CV facts (Peter, 2026-11-25: plain wording).
  */
 export const threads: Thread[] = [
   {
     key: "model",
     title: "Model",
-    lab: "Read Lab · USC",
-    line: "A Rescorla-Wagner simulation of how anhedonia breaks reward learning: choices that stop following learned value cost far more than slower learning.",
+    lab: "SAND Lab · USC",
+    line: "In a Rescorla-Wagner simulation of anhedonia, lower choice consistency cut earned reward far more than a lower learning rate (28.5% vs. 3.1%).",
     href: "/research/#model",
   },
   {
     key: "signal",
     title: "Signal",
-    lab: "Itti Lab · USC Viterbi",
-    line: "Whether that collapse is audible. An open-source pipeline that pulls acoustic biomarkers out of clinical interviews without the audio ever leaving the room.",
+    lab: "iLab · USC Viterbi",
+    line: "ClinicalWhisper, an open-source pipeline that analyzes clinical interview audio on the local machine, and a preregistered benchmark of voice against fMRI for anhedonia.",
     href: "/research/#signal",
   },
   {
     key: "circuit",
     title: "Circuit",
     lab: "NIMH · Experimental Therapeutics",
-    line: "What the circuit is doing while it happens. MEG source localization and Lempel-Ziv signal complexity in the insula, explored as a correlate of suicidal thoughts.",
+    line: "Lempel-Ziv complexity of source-localized MEG in 57 patients with depression; in exploratory analyses, insula broadband complexity tracked MADRS severity.",
     href: "/research/#circuit",
   },
 ];

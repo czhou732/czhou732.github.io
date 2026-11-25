@@ -1,5 +1,5 @@
 /**
- * The preregistered two-stream benchmark (osf.io/bsvrj).
+ * The preregistered two-stream benchmark (osf.io/4d6ey).
  *
  * SOURCE OF TRUTH: the manuscript itself:
  *   ~/Research/Labs/NSG/Dopaminergic_Voice/overleaf_audit/main.tex

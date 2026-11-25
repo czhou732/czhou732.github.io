@@ -54,7 +54,7 @@ function DataTable() {
         voice model reached {fmt(permutations.voice.auc)} (permutation p ={" "}
         {permutations.voice.p}, not significant after Bonferroni correction)
         and the best fMRI model {fmt(permutations.bold.auc)} (p ={" "}
-        {permutations.bold.p}). Both are modest and neither dominates the other.
+        {permutations.bold.p}).
       </caption>
       <thead>
         <tr>
@@ -256,7 +256,7 @@ export function Benchmark() {
         <b style={{ color: "var(--ink-2)", fontWeight: 600 }}>Fig. 1</b>{" "}
         <span className="sm:hidden">RF random forest · GB gradient boosted · LR logistic regression. </span>AUC-ROC with 95%
         bootstrap CI, stratified 5-fold CV. Primary preregistered analysis,{" "}
-        <a href="https://osf.io/bsvrj">osf.io/bsvrj</a>.
+        <a href="https://osf.io/4d6ey">osf.io/4d6ey</a>.
       </figcaption>
 
     </figure>

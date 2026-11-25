@@ -56,13 +56,6 @@ export function Praxis() {
             {praxis.full}
           </span>
         </div>
-
-        <p
-          className="m-0 max-w-[40ch] text-[clamp(1.02rem,2.2vw,1.2rem)] leading-[1.35]"
-          style={{ color: "var(--accent)" }}
-        >
-          {praxis.tagline}
-        </p>
       </header>
 
       <p className="m-0 max-w-[62ch] text-[16px]">{praxis.line}</p>

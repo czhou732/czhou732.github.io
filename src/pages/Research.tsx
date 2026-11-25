@@ -2,14 +2,11 @@ import { Page, Section, SectionHead } from "../components/Page";
 import { Cite } from "../components/Cite";
 import { ResultsTable } from "../components/ResultsTable";
 import { Praxis } from "../components/Praxis";
-import { publications, research, software } from "../content/cv";
+import { KIND_LABEL, publications, research, software } from "../content/cv";
+import type { RefKind } from "../content/cv";
 import { threads } from "../content/profile";
 
-const STATUS: Record<string, string> = {
-  preprint: "Preprint",
-  "in-prep": "In preparation",
-  presented: "Talk / poster",
-};
+const KINDS: RefKind[] = ["preprint", "open-science", "in-prep", "presented"];
 
 export function Research() {
   return (
@@ -17,12 +14,12 @@ export function Research() {
       <Section first>
         <div className="flex flex-col gap-5">
           <h1 className="u-display m-0 max-w-[22ch] text-[clamp(1.7rem,3.1vw,2.2rem)]">
-            Reward learning, and whether you can measure it from outside the skull.
+            Research
           </h1>
           <p className="u-measure m-0">
-            Three positions, one question. The benchmark figure is on the{" "}
-            <a href="/#benchmark">home page</a>; Table 1 gives its numbers. Then the
-            projects, then everything written or presented.
+            Table 1 gives the numbers behind the figure on the{" "}
+            <a href="/#benchmark">home page</a>. Projects, software and publications
+            follow.
           </p>
         </div>
         <ResultsTable />
@@ -81,9 +78,9 @@ export function Research() {
                 {s.name}
               </a>
               <span className="u-label tnum leading-snug">{s.dates}</span>
+              <span className="u-label leading-snug">{s.tags}</span>
             </div>
             <div className="flex flex-col gap-3">
-              <p className="m-0 max-w-[64ch] text-[16px]">{s.line}</p>
               <ul className="m-0 flex list-none flex-col gap-3 p-0">
                 {s.points.map((p) => (
                   <li
@@ -100,34 +97,36 @@ export function Research() {
         ))}
       </Section>
 
-      <Section id="publications">
-        <SectionHead>Manuscripts and presentations</SectionHead>
-        <ol className="m-0 flex list-none flex-col p-0">
-          {publications.map((p, i) => (
-            <li
-              key={`${p.title}-${i}`}
-              className="grid gap-x-8 gap-y-2 border-t py-5 first:border-t-0 first:pt-0 sm:grid-cols-[9rem_1fr]"
-              style={{ borderColor: "var(--rule-2)" }}
-            >
-              <div className="flex flex-col gap-1">
-                <span className="u-label tnum" style={{ color: "var(--ink-2)" }}>
-                  {p.year}
-                </span>
-                <span className="u-label leading-snug">{STATUS[p.status]}</span>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <p className="m-0 max-w-[62ch] text-[16.5px]" style={{ color: "var(--ink)" }}>
-                  {p.href ? <a href={p.href}>{p.title}</a> : p.title}
-                </p>
-                <p className="u-label m-0 normal-case">
-                  {p.authors} · {p.venue}
-                  {p.doi ? ` · doi ${p.doi}` : ""}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </Section>
+      {KINDS.map((k) => (
+        <Section key={k} id={k === "preprint" ? "publications" : k}>
+          <SectionHead>{KIND_LABEL[k]}</SectionHead>
+          <ol className="m-0 flex list-none flex-col p-0">
+            {publications
+              .filter((p) => p.kind === k)
+              .map((p, i) => (
+                <li
+                  key={`${p.title}-${i}`}
+                  className="grid gap-x-8 gap-y-2 border-t py-5 first:border-t-0 first:pt-0 sm:grid-cols-[9rem_1fr]"
+                  style={{ borderColor: "var(--rule-2)" }}
+                >
+                  <span className="u-label tnum" style={{ color: "var(--ink-2)" }}>
+                    {p.year}
+                  </span>
+                  <div className="flex flex-col gap-1.5">
+                    <p className="m-0 max-w-[62ch] text-[16.5px]" style={{ color: "var(--ink)" }}>
+                      {p.href ? <a href={p.href}>{p.title}</a> : p.title}
+                      {p.descriptor ? ` ${p.descriptor}` : ""}
+                    </p>
+                    <p className="u-label m-0 normal-case">
+                      {p.authors} · {p.venue}
+                      {p.doi ? ` · doi ${p.doi}` : p.href ? ` · ${p.href.replace("https://", "")}` : ""}
+                    </p>
+                  </div>
+                </li>
+              ))}
+          </ol>
+        </Section>
+      ))}
     </Page>
   );
 }

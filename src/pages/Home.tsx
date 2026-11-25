@@ -7,7 +7,7 @@ import { profile, threads } from "../content/profile";
 import { essays } from "../content/essays";
 import { praxis, syllabus } from "../content/praxis";
 import { permutations } from "../content/findings";
-import { publications, software } from "../content/cv";
+import { biorxiv, cwPaper, nofOne, software } from "../content/cv";
 
 const stagger = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
@@ -22,7 +22,7 @@ type Ref = {
 
 /** Reference-list form. Everything here is read from the content files. */
 function selectedWork(): Ref[] {
-  const preprint = publications[0];
+  const preprint = biorxiv;
   const cw = software[0];
   return [
     {
@@ -30,7 +30,7 @@ function selectedWork(): Ref[] {
       authors: preprint.authors,
       year: preprint.year,
       title: preprint.title,
-      venue: preprint.venue,
+      venue: `${preprint.venue} preprint, not peer reviewed`,
       tags: [
         { label: "DOI", href: preprint.href! },
         { label: "BibTeX", href: "/research/#cite" },
@@ -45,8 +45,17 @@ function selectedWork(): Ref[] {
       venue: "Open-source software, MIT licence. Zenodo 10.5281/zenodo.20559786",
       tags: [
         { label: "GitHub", href: cw.href },
-        { label: "DOI", href: "https://doi.org/10.5281/zenodo.20559786" },
+        { label: "DOI", href: `https://doi.org/${cw.doi}` },
+        { label: "Paper", href: cwPaper.href! },
       ],
+    },
+    {
+      key: "nof1",
+      authors: nofOne.authors,
+      year: nofOne.year,
+      title: nofOne.title,
+      venue: `${nofOne.descriptor} ${nofOne.venue}`,
+      tags: [{ label: "OSF", href: nofOne.href! }],
     },
     {
       key: "syllabus",
@@ -74,7 +83,7 @@ export function Home() {
             <Side label="Status">
               <p className="m-0" style={{ color: "var(--ink-2)" }}>
                 Preprint on bioRxiv, not peer reviewed. Preregistered at{" "}
-                <a href={profile.contact.osf}>osf.io/bsvrj</a> before the data were analysed.
+                <a href={profile.contact.osf}>osf.io/4d6ey</a> before the data were analysed.
               </p>
             </Side>
           }
@@ -116,7 +125,7 @@ export function Home() {
 
           <div className="rise flex flex-wrap gap-2.5" style={stagger(3)}>
             <a
-              href={publications[0].href}
+              href={biorxiv.href}
               className="rounded-[2px] px-5 py-3 font-mono text-[10.5px] tracking-[0.1em] uppercase no-underline transition-colors duration-200"
               style={{ background: "var(--ink)", color: "var(--paper)" }}
             >
@@ -140,18 +149,10 @@ export function Home() {
         </Row>
       </Section>
 
-      {/* Three angles on one question. */}
+      {/* The three research threads. */}
       <Section id="threads" signal={1}>
-        <Row
-          side={
-            <Side label="Why three">
-              <p className="m-0" style={{ color: "var(--ink-2)" }}>
-                Not spread thin. Three angles on one question, triangulating.
-              </p>
-            </Side>
-          }
-        >
-          <SectionHead>Three labs, one question, three angles on it.</SectionHead>
+        <Row>
+          <SectionHead>Research</SectionHead>
           <p
             className="m-0 max-w-[40ch] text-[clamp(1.2rem,2.4vw,1.45rem)] leading-[1.45] font-semibold"
             style={{ color: "var(--ink)" }}
@@ -194,7 +195,7 @@ export function Home() {
             <Side label={praxis.name}>
               <p className="m-0" style={{ color: "var(--ink-2)" }}>
                 I founded and lead PRAXIS, an undergraduate research group at USC. Faculty
-                sponsor, Dr. Laurent Itti.{" "}
+                sponsor: Dr. Laurent Itti.{" "}
                 <a href="/research/#praxis">What the group runs</a>, or{" "}
                 <a href={praxis.href}>{praxis.display}</a>.
               </p>
@@ -273,7 +274,7 @@ export function Home() {
                 Permutation <i>p</i> = {permutations.voice.p} for voice (
                 {permutations.voice.model.toLowerCase()}) and {permutations.bold.p} for fMRI (
                 {permutations.bold.model.toLowerCase()}), both uncorrected. The 95% intervals
-                overlap: both results are modest, and neither dominates the other.
+                overlap.
               </>,
             ]}
           />

@@ -55,7 +55,7 @@ function Footer() {
     { label: "Email", href: `mailto:${c.email}`, text: c.email },
     { label: "GitHub", href: c.github, text: "github.com/czhou732" },
     { label: "LinkedIn", href: c.linkedin, text: "linkedin.com/in/chengdong-zhou" },
-    { label: "OSF", href: c.osf, text: "osf.io/bsvrj" },
+    { label: "OSF", href: c.osf, text: "osf.io/4d6ey" },
   ];
 
   return (
@@ -64,7 +64,7 @@ function Footer() {
       style={{ borderColor: "var(--rule)" }}
     >
       <div className="flex flex-col gap-8">
-        <SectionHead>Get in touch by email. I read all of it.</SectionHead>
+        <SectionHead>Contact</SectionHead>
 
         <dl className="m-0 grid gap-x-10 gap-y-4 sm:grid-cols-2">
           {links.map((l) => (

@@ -3,13 +3,17 @@ import {
   education,
   interests,
   honors,
+  KIND_LABEL,
   publications,
   research,
   service,
   skills,
-  teaching,
+  software,
   type Entry,
+  type RefKind,
 } from "../content/cv";
+
+const KINDS: RefKind[] = ["preprint", "open-science", "in-prep", "presented"];
 import { profile } from "../content/profile";
 
 /** The CV opens like a printed page: a heavy rule, then the person. The portrait
@@ -34,9 +38,7 @@ function Masthead() {
             {profile.name}
           </h1>
           <p className="m-0 max-w-[54ch] text-[18px] leading-[1.55]" style={{ color: "var(--ink-2)" }}>
-            Computational psychiatry: reward learning, anhedonia, and multimodal
-            biomarkers of psychiatric state (acoustic prosody, MEG, fMRI), with a
-            commitment to accessible and inclusive research design.
+            Department of Psychology, University of Southern California
           </p>
           <p className="u-label m-0">
             {profile.contact.email} · Los Angeles, CA
@@ -110,12 +112,6 @@ export function Cv() {
                   {ed.degree}
                 </p>
                 <p className="u-label m-0 normal-case">{ed.points.join(" · ")}</p>
-                {ed.coursework && (
-                  <p className="m-0 max-w-[64ch] text-[15px]">
-                    <span className="u-label">Coursework </span>
-                    {ed.coursework}
-                  </p>
-                )}
               </div>
             </div>
           ))}
@@ -124,25 +120,18 @@ export function Cv() {
 
       <Section>
         <SectionHead>Research interests</SectionHead>
-        <p className="u-measure m-0 text-[16.5px]" style={{ color: "var(--ink)" }}>
-          {interests}
-        </p>
-      </Section>
-
-      <Section>
-        <SectionHead>Honors and awards</SectionHead>
         <dl className="m-0 flex flex-col">
-          {honors.map((h) => (
+          {interests.map((it) => (
             <div
-              key={h.name}
+              key={it.label}
               className="grid gap-x-8 gap-y-1 border-t py-4 first:border-t-0 first:pt-0 sm:grid-cols-[11rem_1fr]"
               style={{ borderColor: "var(--rule-2)" }}
             >
-              <dt className="u-label tnum" style={{ color: "var(--ink-2)" }}>
-                {h.year}
+              <dt className="u-label" style={{ color: "var(--ink-2)" }}>
+                {it.label}
               </dt>
-              <dd className="m-0 max-w-[62ch] text-[15.5px]" style={{ color: "var(--ink)" }}>
-                {h.name}
+              <dd className="m-0 max-w-[62ch] text-[16px]" style={{ color: "var(--ink)" }}>
+                {it.text}
               </dd>
             </div>
           ))}
@@ -158,38 +147,78 @@ export function Cv() {
         </div>
         <p className="m-0">
           <a href="/research/" className="u-hit font-mono text-[10.5px] tracking-[0.08em] uppercase">
-            Table 1, software and project detail
+            More on the Research page
           </a>
         </p>
       </Section>
 
-      <Section id="publications">
-        <SectionHead>Manuscripts and presentations</SectionHead>
-        {/* Reference-list form: hanging indent, authors first, DOI last. */}
-        <ol className="m-0 flex list-none flex-col gap-4 p-0">
-          {publications.map((p) => (
-            <li
-              key={p.title + p.year}
-              className="max-w-[68ch] pl-[1.75rem] text-[15.5px] leading-relaxed [text-indent:-1.75rem]"
-            >
-              <span style={{ color: "var(--ink)" }}>{p.authors}</span> ({p.year}).{" "}
-              <span style={{ color: "var(--ink)" }}>{p.title}.</span> {p.venue}.
-              {p.doi && (
-                <>
-                  {" "}
-                  <a href={p.href}>https://doi.org/{p.doi}</a>
-                </>
-              )}
-            </li>
+      {KINDS.map((k) => (
+        <Section key={k} id={k === "preprint" ? "publications" : k}>
+          <SectionHead>{KIND_LABEL[k]}</SectionHead>
+          {/* Reference-list form: hanging indent, authors first, link last. */}
+          <ol className="m-0 flex list-none flex-col gap-4 p-0">
+            {publications
+              .filter((p) => p.kind === k)
+              .map((p) => (
+                <li
+                  key={p.title + p.year}
+                  className="max-w-[68ch] pl-[1.75rem] text-[15.5px] leading-relaxed [text-indent:-1.75rem]"
+                >
+                  <span style={{ color: "var(--ink)" }}>{p.authors}</span> ({p.year}).{" "}
+                  <span style={{ color: "var(--ink)" }}>{p.title}</span>
+                  {p.descriptor ? ` ${p.descriptor}` : ""}. {p.venue}.
+                  {p.href && (
+                    <>
+                      {" "}
+                      <a href={p.href}>{p.doi ? `https://doi.org/${p.doi}` : p.href}</a>
+                    </>
+                  )}
+                </li>
+              ))}
+          </ol>
+        </Section>
+      ))}
+
+      <Section id="software">
+        <SectionHead>Research software</SectionHead>
+        <div className="flex flex-col">
+          {software.map((s) => (
+            <Row
+              key={s.name}
+              e={{ role: s.name, org: s.tags, dates: s.dates, points: s.points }}
+            />
           ))}
-        </ol>
+        </div>
       </Section>
 
       <Section>
-        <SectionHead>Teaching</SectionHead>
+        <SectionHead>Fellowships and awards</SectionHead>
+        <dl className="m-0 flex flex-col">
+          {honors.map((h) => (
+            <div
+              key={h.name}
+              className="grid gap-x-8 gap-y-1 border-t py-4 first:border-t-0 first:pt-0 sm:grid-cols-[11rem_1fr]"
+              style={{ borderColor: "var(--rule-2)" }}
+            >
+              <dt className="u-label tnum" style={{ color: "var(--ink-2)" }}>
+                {h.year}
+              </dt>
+              <dd className="m-0 flex max-w-[62ch] flex-col gap-0.5 text-[15.5px]" style={{ color: "var(--ink)" }}>
+                <span>{h.name}</span>
+                {h.note && (
+                  <span className="u-label normal-case leading-relaxed">{h.note}</span>
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
+
+      <Section>
+        <SectionHead>Clinical and service experience</SectionHead>
         <div className="flex flex-col">
-          {teaching.map((e) => (
-            <Row key={e.role} e={e} />
+          {service.map((e) => (
+            <Row key={e.role + e.org} e={e} />
           ))}
         </div>
       </Section>
@@ -211,16 +240,6 @@ export function Cv() {
           ))}
         </dl>
       </Section>
-
-      <Section>
-        <SectionHead>Clinical and service</SectionHead>
-        <div className="flex flex-col">
-          {service.map((e) => (
-            <Row key={e.role + e.org} e={e} />
-          ))}
-        </div>
-      </Section>
-
     </Page>
   );
 }

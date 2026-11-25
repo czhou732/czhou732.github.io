@@ -4,7 +4,7 @@ import { Side } from "./Margin";
 /** The two caveats a skimmer must see, set in the margin beside Figure 1. */
 export function ReadBeforeCiting() {
   return (
-    <Side label="Read before citing">
+    <Side label="Caveats">
       {keyCaveats.map((c) => (
         <p key={c} className="m-0" style={{ color: "var(--ink-2)" }}>
           {c}

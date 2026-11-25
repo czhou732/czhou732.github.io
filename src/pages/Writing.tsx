@@ -8,13 +8,11 @@ export function Writing() {
       <Section first>
         <div className="flex flex-col gap-5">
           <h1 className="u-display m-0 max-w-[20ch] text-[clamp(1.7rem,3.1vw,2.2rem)]">
-            Four essays, written in one semester.
+            Writing
           </h1>
           <p className="u-measure m-0">
-            Two on the things I study from the outside: how ketamine gets
-            reported and how attention gets sold. Two on the San Gabriel
-            Valley, where I am from and the reason I think about who gets
-            counted.
+            Four essays written for WRIT 340 (Advanced Writing for the Social
+            Sciences) at USC in spring 2026.
           </p>
         </div>
       </Section>

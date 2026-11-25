@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import { publications } from "../content/cv";
+import { biorxiv } from "../content/cv";
 
-const pub = publications[0];
+const pub = biorxiv;
 
 /** Built from cv.ts so the BibTeX cannot disagree with the reference list. */
 const BIBTEX = `@article{zhou2026crossmodal,
